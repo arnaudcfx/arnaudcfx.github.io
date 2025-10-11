@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SPEAM 2023-2024 Team 6 – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em; }
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .gitlab-link { display: block; background: #fc6d26; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .gitlab-link:hover { background: #b34b00; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SPEAM 2023-2024 Team 6</h1>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">Jupyter Notebook</span>
+      <!-- Add other languages/tools as needed -->
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      Academic group project for the SPEAM program at Université de Liège. The project focused on advanced engineering analysis and modeling. Collaborated in a multidisciplinary team to design, implement, and validate solutions to a complex real-world problem (details anonymized for confidentiality).
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Python for data analysis, modeling, and automation</li>
+      <li>Jupyter Notebooks for collaborative code development and reporting</li>
+      <li>Scientific libraries (NumPy, SciPy, Matplotlib, etc.)</li>
+      <li>Version control with GitLab</li>
+      <li>Technical reporting and teamwork</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Data from sensors or simulation is preprocessed and cleaned in Python.</li>
+      <li>Mathematical models are implemented and tested in Jupyter Notebooks.</li>
+      <li>Results are visualized and analyzed to guide engineering decisions.</li>
+      <li>Team members contribute code, documentation, and analysis via GitLab.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code># Example: Data preprocessing in Python
+import numpy as np
+data = np.loadtxt("data.csv", delimiter=",")
+cleaned = data[~np.isnan(data).any(axis=1)]
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Delivered a working prototype and comprehensive technical report to faculty.</li>
+      <li>Demonstrated effective interdisciplinary teamwork and project management.</li>
+      <li>Enhanced skills in scientific programming, data analysis, and reporting.</li>
+    </ul>
+    <a class="gitlab-link" href="https://gitlab.uliege.be/SPEAM/2023-2024/team-6" target="_blank">View the project on GitLab</a>
+  </div>
+</body>
+</html>
