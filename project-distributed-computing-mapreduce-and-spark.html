@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Distributed Computing: MapReduce & Spark – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em; }
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .gitlab-link { display: block; background: #fc6d26; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .gitlab-link:hover { background: #b34b00; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Distributed Computing: MapReduce &amp; Spark</h1>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">Spark</span>
+      <span class="lang-tag">MapReduce</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      University course project focused on distributed data processing using MapReduce and Apache Spark. The goal was to understand and implement scalable algorithms for big data analytics.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Python for scripting and algorithm development</li>
+      <li>Apache Spark for distributed computation</li>
+      <li>MapReduce paradigm for scalable data processing</li>
+      <li>Cluster computing concepts</li>
+      <li>Data analysis and reporting</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Implemented classic MapReduce algorithms (e.g., word count, join, aggregation) in Python.</li>
+      <li>Used PySpark to process large datasets in parallel across a cluster.</li>
+      <li>Optimized data pipelines for performance and scalability.</li>
+      <li>Analyzed and visualized results to report on efficiency and accuracy.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code># Example: Word count with PySpark
+from pyspark import SparkContext
+sc = SparkContext()
+counts = sc.textFile("data.txt") \
+           .flatMap(lambda line: line.split()) \
+           .map(lambda word: (word, 1)) \
+           .reduceByKey(lambda a, b: a + b)
+print(counts.collect())
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Processed datasets exceeding several gigabytes efficiently.</li>
+      <li>Demonstrated real-world distributed data analytics skills.</li>
+      <li>Produced a technical report and presented findings to peers and faculty.</li>
+    </ul>
+    <a class="gitlab-link" href="https://gitlab.uliege.be/Arnaud.Crucifix/distributed-computing-mapreduce-and-spark" target="_blank">View the project on GitLab</a>
+  </div>
+</body>
+</html>
