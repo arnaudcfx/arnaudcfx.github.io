@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Counter – Portfolio Example</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; margin-bottom: 0.5em; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .screenshot { text-align: center; margin: 2em 0; }
+    .screenshot img { max-width: 100%; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.07);}
+    .team { color: #333; font-size: 1.1em; }
+    .lang-list {
+      display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.5em 0 1em 0;
+    }
+    .lang-tag {
+      background: #eef0fb;
+      color: #5e6ad2;
+      border-radius: 4px;
+      padding: 2px 10px;
+      font-size: 0.95em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .notice {
+      background: #fff3cd;
+      color: #856404;
+      border-radius: 6px;
+      padding: 1em 1.2em;
+      margin-top: 2em;
+      font-size: 1.05em;
+      border-left: 5px solid #ffe066;
+    }
+    .github-link {
+      display: block;
+      background: #5e6ad2;
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.8em 1em;
+      text-align: center;
+      margin-top: 2em;
+      font-size: 1.1em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.16s;
+    }
+    .github-link:hover {
+      background: #1e3799;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Customer Counter</h1>
+    <div class="team">
+      <b>Individual project</b>
+    </div>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">Flask</span>
+      <span class="lang-tag">OpenCV</span>
+      <span class="lang-tag">JavaScript</span>
+    </div>
+    <h2>Summary</h2>
+    <p>
+      Developed a web app to count customers entering a store using a camera feed and display real-time stats on a dashboard. Used Flask for backend, OpenCV for video processing, and JavaScript for the frontend dashboard.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Real-time video processing with OpenCV</li>
+      <li>Web backend with Flask</li>
+      <li>Interactive JavaScript dashboard</li>
+      <li>Deployment with Docker</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>
+import cv2
 
+cap = cv2.VideoCapture(0)
+while True:
+    ret, frame = cap.read()
+    # ... customer detection logic ...
+    cv2.imshow('frame', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+    <h2>Results</h2>
+    <ul>
+      <li>Live demo deployed for a local shop</li>
+      <li>Dashboard shows real-time and historical customer counts</li>
+    </ul>
+    <div class="screenshot">
+      <img src="https://dummyimage.com/720x300/dae1f8/5e6ad2.png&text=Customer+Counter+Dashboard" alt="Customer Counter Dashboard">
+    </div>
+    <a class="github-link" href="https://github.com/maxgoffart/customer-counter" target="_blank">View the project on GitHub</a>
+  </div>
+</body>
+</html>
