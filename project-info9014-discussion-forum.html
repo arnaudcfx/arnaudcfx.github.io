@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INFO9014-Discussion-Forum – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>INFO9014-Discussion-Forum</h1>
+    <div class="lang-list">
+      <span class="lang-tag">JavaScript</span>
+      <span class="lang-tag">HTML</span>
+      <span class="lang-tag">CSS</span>
+      <span class="lang-tag">Jupyter Notebook</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      Web-based forum platform developed for the INFO9014 course, enabling community interaction, topic creation, and threaded discussions for students and instructors.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>JavaScript for client-side logic and interactivity</li>
+      <li>HTML/CSS for layout and responsive design</li>
+      <li>Dynamic DOM manipulation and AJAX</li>
+      <li>Basic backend integration (API or server-side scripting)</li>
+      <li>Data visualization with Jupyter Notebook</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Implements topic listing, post creation, and threaded replies with dynamic JS.</li>
+      <li>Uses AJAX or fetch calls to submit and load data asynchronously.</li>
+      <li>CSS enables responsive layouts and user-friendly UI.</li>
+      <li>Jupyter Notebooks may analyze forum usage data or visualize content statistics.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Add new post (simplified JS)
+function addPost(topicId, content) {
+    fetch('/api/newpost', {
+        method: 'POST',
+        body: JSON.stringify({topicId, content}),
+        headers: {'Content-Type': 'application/json'}
+    }).then(updateForumDisplay);
+}
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Facilitated student discussion and collaboration during course projects.</li>
+      <li>Demonstrated modern frontend techniques and asynchronous data flow.</li>
+      <li>Improved group communication and documentation skills.</li>
+    </ul>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
+  </div>
+</body>
+</html>
