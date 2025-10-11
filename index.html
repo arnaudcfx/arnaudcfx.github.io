@@ -1,132 +1,95 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mes Projets</title>
+  <title>My Projects Portfolio</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
     .repo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .repo-card {
       background: #fff;
       border-radius: 16px;
+      border-left: 8px solid #5e6ad2;
       box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.5rem 1rem 1.5rem;
       text-decoration: none;
       color: #222;
-      transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+      transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, border-color 0.2s;
       display: flex;
       flex-direction: column;
-      min-height: 150px;
+      min-height: 180px;
       cursor: pointer;
-    }
-    .repo-card:hover, .repo-card:focus {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.16);
-      transform: translateY(-6px) scale(1.03);
-      background: linear-gradient(100deg, #f8fafc 0%, #e0e7ff 100%);
+      position: relative;
       outline: none;
     }
+    .repo-card:hover, .repo-card:focus {
+      box-shadow: 0 6px 24px rgba(94,106,210,0.18);
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(100deg, #f8fafc 0%, #e0e7ff 100%);
+      border-left: 8px solid #1e3799;
+    }
     .repo-card h3 {
-      margin: 0 0 1rem;
+      margin: 0 0 0.75rem;
       font-size: 1.25rem;
-      font-weight: 600;
+      font-weight: 700;
+      color: #1e3799;
     }
     .repo-card p {
-      margin: 0;
-      color: #555;
-      font-size: 1rem;
+      margin: 0 0 1.5rem;
+      color: #4c4c4c;
+      font-size: 1.07rem;
+    }
+    .lang-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin-top: auto;
+      margin-bottom: 0.5em;
+    }
+    .lang-tag {
+      background: #eef0fb;
+      color: #5e6ad2;
+      border-radius: 4px;
+      padding: 2px 10px;
+      font-size: 0.92em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
     }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;">Mes Projets Collaboratifs et de Groupe</h1>
-  <div class="repo-grid" id="repo-list">
-    <!-- Cartes manuelles pour projets collaboratifs/groupes -->
-    <a class="repo-card" href="https://github.com/arnaudcfx/Legal-Taxonomy-Explorer" target="_blank">
-      <h3>Legal-Taxonomy-Explorer</h3>
-      <p>Explorateur de taxonomie légale. Projet collaboratif.</p>
+  <h1 style="text-align:center;">My Projects Portfolio</h1>
+  <div class="repo-grid">
+    <!-- Card: Deep Learning Project (private group) -->
+    <a class="repo-card" href="project-deep-learning.html">
+      <h3>Deep Learning Image Classifier</h3>
+      <p>Group project for the Deep Learning course at University of Liège. Developed a convolutional neural network (CNN) for image classification.</p>
+      <div class="lang-list">
+        <span class="lang-tag">Python</span>
+        <span class="lang-tag">PyTorch</span>
+        <span class="lang-tag">Jupyter Notebook</span>
+      </div>
     </a>
-    <a class="repo-card" href="https://github.com/LionelLR/INFO9014-Discussion-Forum" target="_blank">
-      <h3>INFO9014-Discussion-Forum</h3>
-      <p>Forum de discussion pour le cours INFO9014. Projet de groupe.</p>
+    <!-- Card: Customer Counter (public repo) -->
+    <a class="repo-card" href="project-customer-counter.html">
+      <h3>Customer Counter</h3>
+      <p>Web application to count customers entering a store, using a camera and real-time dashboard.</p>
+      <div class="lang-list">
+        <span class="lang-tag">Python</span>
+        <span class="lang-tag">Flask</span>
+        <span class="lang-tag">OpenCV</span>
+        <span class="lang-tag">JavaScript</span>
+      </div>
     </a>
-    <a class="repo-card" href="https://github.com/SamuelD13/High-Performance-Scientific-Computing" target="_blank">
-      <h3>High-Performance-Scientific-Computing</h3>
-      <p>Calcul scientifique haute performance. Projet collaboratif.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/AlexandreDebart/Projet3-OS" target="_blank">
-      <h3>Projet3-OS</h3>
-      <p>Projet 3 de systèmes d'exploitation. Collaboration avec Alexandre Debart.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/adilayman/info0031-projects" target="_blank">
-      <h3>info0031-projects</h3>
-      <p>Projets INFO0031 - collaboration avec Adil Ayman.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/AlexandreDebart/Projet2-OS" target="_blank">
-      <h3>Projet2-OS</h3>
-      <p>Projet 2 de systèmes d'exploitation. Collaboration avec Alexandre Debart.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/AlexandreDebart/Projet1-OS" target="_blank">
-      <h3>Projet1-OS</h3>
-      <p>Projet 1 de systèmes d'exploitation. Collaboration avec Alexandre Debart.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/adilayman/info0045-projects" target="_blank">
-      <h3>info0045-projects</h3>
-      <p>Projets INFO0045 - collaboration avec Adil Ayman.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/adilayman/info0027-projects" target="_blank">
-      <h3>info0027-projects</h3>
-      <p>Projets INFO0027 - collaboration avec Adil Ayman.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/adilayman/info0004-project-3" target="_blank">
-      <h3>info0004-project-3</h3>
-      <p>Projet 3 du cours INFO0004 - collaboration avec Adil Ayman.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/maxgoffart/customer-counter" target="_blank">
-      <h3>customer-counter</h3>
-      <p>Application de comptage de clients. Collaboration avec Max Goffart.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/Ecko112/INFO0009-Site" target="_blank">
-      <h3>INFO0009-Site</h3>
-      <p>Site web pour le cours INFO0009. Collaboration avec Ecko112.</p>
-    </a>
-    <a class="repo-card" href="https://github.com/grizoux19/Projet-Deep-Learning" target="_blank">
-      <h3>Projet-Deep-Learning</h3>
-      <p>Projet collaboratif de deep learning réalisé dans le cadre d'un groupe.</p>
-    </a>
-   
+    <!-- You can duplicate more cards below for each project -->
   </div>
-  <!-- Script pour charger dynamiquement mes propres repos -->
-  <script>
-    async function loadRepos(username) {
-      const res = await fetch(`https://api.github.com/users/${username}/repos`);
-      const repos = await res.json();
-      const container = document.getElementById('repo-list');
-      repos.forEach(repo => {
-        // Empêcher les doublons si un projet figure déjà en manuel
-        const existing = Array.from(container.children).some(
-          a => a.getAttribute('href') === repo.html_url
-        );
-        if (!existing) {
-          const card = document.createElement('a');
-          card.className = 'repo-card';
-          card.href = repo.html_url;
-          card.target = '_blank';
-          card.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>${repo.description || ''}</p>
-          `;
-          container.appendChild(card);
-        }
-      });
-    }
-    window.onload = () => loadRepos('arnaudcfx'); // Remplace par ton nom d'utilisateur GitHub
-  </script>
-  -->
 </body>
 </html>
