@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projet2-OS – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Projet2-OS</h1>
+    <div class="lang-list">
+      <span class="lang-tag">C</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      The second collaborative project in Operating Systems, extending our OS kernel to include advanced process and memory management features.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>C programming (systems-level, memory management)</li>
+      <li>Process management and scheduling policies</li>
+      <li>Memory paging and virtual address space</li>
+      <li>Debugging concurrent systems</li>
+      <li>Version control with Git</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Implemented process table and new scheduling strategies (priority, round robin).</li>
+      <li>Added support for virtual memory and page tables.</li>
+      <li>Designed interrupt handlers for timer and memory faults.</li>
+      <li>Integrated extensive logging and debugging macros.</li>
+      <li>Tested edge cases such as process starvation and memory leaks.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Page fault handler (simplified)
+void handle_page_fault(proc_t *p, uint32_t addr) {
+    if (not_mapped(addr)) {
+        map_page(p, addr);
+    } else {
+        kill_process(p);
+    }
+}
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Successfully implemented virtual memory and preemptive multitasking.</li>
+      <li>Improved team collaboration on complex concurrent codebases.</li>
+      <li>Deepened understanding of low-level OS design and memory models.</li>
+    </ul>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
+  </div>
+</body>
+</html>
