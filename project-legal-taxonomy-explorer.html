@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legal-Taxonomy-Explorer – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link:hover { background: #1e3799; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Legal-Taxonomy-Explorer</h1>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">HTML</span>
+      <span class="lang-tag">Dockerfile</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      Automates the extraction of hierarchical taxonomies from fund-related legal documents. Converts unstructured text into structured knowledge graphs, helping attorneys quickly draft and review prospectuses, agreements, and constitutional documents.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Python for NLP and automation</li>
+      <li>Text parsing, regular expressions, and tree data structures</li>
+      <li>HTML reporting and Docker for deployment</li>
+      <li>Knowledge graph generation</li>
+      <li>Legal tech domain knowledge</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Parses raw legal documents using regex and NLP techniques.</li>
+      <li>Identifies key legal terms and hierarchy based on document structure and language patterns.</li>
+      <li>Builds a tree (taxonomy) of concepts and outputs as HTML and/or graph data.</li>
+      <li>Can export the taxonomy to structured formats for further analysis or visualization.</li>
+      <li>Dockerfile ensures reproducibility and easy cloud deployment.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code># Pseudocode: Extract headings and build taxonomy tree
+for line in document:
+    if is_heading(line):
+        current_node = add_node_to_tree(line)
+    else:
+        current_node.add_content(line)
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Enabled rapid review and drafting of complex legal documents.</li>
+      <li>Reduced manual error and time spent on taxonomy extraction.</li>
+      <li>Demoed to legal professionals for workflow improvement.</li>
+    </ul>
+    <a class="github-link" href="https://github.com/arnaudcfx/Legal-Taxonomy-Explorer" target="_blank">View the project on GitHub</a>
+  </div>
+</body>
+</html>
