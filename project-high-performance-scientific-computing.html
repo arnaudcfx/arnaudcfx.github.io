@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>High-Performance-Scientific-Computing – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>High-Performance-Scientific-Computing</h1>
+    <div class="lang-list">
+      <span class="lang-tag">C</span>
+      <span class="lang-tag">Jupyter Notebook</span>
+      <span class="lang-tag">Shell</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      University group project focused on designing and implementing highly efficient algorithms for scientific data analysis and simulation, leveraging parallel computing techniques.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Parallel programming in C (OpenMP, MPI)</li>
+      <li>Scientific computing, numerical analysis</li>
+      <li>Jupyter Notebook for data visualization and results</li>
+      <li>Shell scripting for automation and reproducibility</li>
+      <li>Profiling, benchmarking, and optimization</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Numerical algorithms (e.g., matrix multiplication, FFT, PDE solvers) coded in C.</li>
+      <li>Parallelized using OpenMP/MPI: distributes computation across CPU cores or nodes.</li>
+      <li>Jupyter Notebooks visualize results and compare speedups between serial/parallel code.</li>
+      <li>Shell scripts automate compilation, running, and result collection for benchmarks.</li>
+      <li>Performance bottlenecks are analyzed and code is iteratively optimized.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Parallel matrix multiplication with OpenMP
+#pragma omp parallel for shared(A, B, C)
+for (int i = 0; i &lt; N; ++i)
+  for (int j = 0; j &lt; N; ++j) {
+    C[i][j] = 0;
+    for (int k = 0; k &lt; N; ++k)
+      C[i][j] += A[i][k] * B[k][j];
+  }
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Achieved up to 8x speedup on multicore hardware versus serial code.</li>
+      <li>Produced detailed reports and visualizations of algorithm scaling.</li>
+      <li>Developed strong practical skills in parallel programming and scientific research.</li>
+    </ul>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
+  </div>
+</body>
+</html>
