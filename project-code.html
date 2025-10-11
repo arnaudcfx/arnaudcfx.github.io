@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link:hover { background: #1e3799; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Code</h1>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      A collection of Python scripts and utilities for automation, data processing, file handling, and rapid prototyping.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Python scripting (os, sys, requests, etc.)</li>
+      <li>Data processing, API requests, and file I/O</li>
+      <li>CLI argument parsing (argparse, sys.argv)</li>
+      <li>Reusable function and module design</li>
+      <li>Basic error handling and logging</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Each script is modular, with a clear entry point and reusable functions.</li>
+      <li>Common patterns: reading/writing files, parsing data, making API requests, or automating tasks.</li>
+      <li>Many scripts use argument parsing for flexibility and automation.</li>
+      <li>Includes utility functions for data cleaning and transformation.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code># Example: Batch rename files in a folder
+import os
+for i, fname in enumerate(os.listdir("data")):
+    os.rename(f"data/{fname}", f"data/file_{i}.txt")
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Enabled automation of repetitive tasks and improved productivity.</li>
+      <li>Used as support scripts in larger projects and coursework.</li>
+      <li>Provided a playground for learning and experimenting with Python features.</li>
+    </ul>
+    <a class="github-link" href="https://github.com/arnaudcfx/Code" target="_blank">View the project on GitHub</a>
+  </div>
+</body>
+</html>
