@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projet1-OS – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em; }
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Projet1-OS</h1>
+    <div class="lang-list">
+      <span class="lang-tag">C</span>
+      <span class="lang-tag">Makefile</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      The first group project in Operating Systems, focusing on foundational OS concepts and the implementation of basic process management and scheduling.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>C programming (systems-level)</li>
+      <li>Process management, context switching</li>
+      <li>Makefile build automation</li>
+      <li>Unit and integration testing of system modules</li>
+      <li>Git for collaborative development</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Implements process creation, switching, and termination using C structs and manual memory management.</li>
+      <li>Scheduler selects the next process to run (e.g., round-robin or priority-based).</li>
+      <li>Interrupt handlers manage time slices and context saving/restoring.</li>
+      <li>Testing framework verifies correct process transitions and system stability.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Process context switch (simplified)
+void context_switch(process_t *from, process_t *to) {
+    save_context(from);
+    restore_context(to);
+    current_process = to;
+}
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Demonstrated correct process switching and scheduling under simulated OS conditions.</li>
+      <li>Established a strong foundation for more advanced OS projects.</li>
+      <li>Improved team collaboration and code review practices.</li>
+    </ul>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
+  </div>
+</body>
+</html>
