@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>info0027-projects – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link:hover { background: #1e3799; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>info0027-projects</h1>
+    <div class="lang-list">
+      <span class="lang-tag">Java</span>
+      <span class="lang-tag">C</span>
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">Makefile</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      INFO0027 - Programming techniques projects: a collection of assignments covering key programming paradigms in Java, C, and Python, with an emphasis on algorithmic thinking and clean code practices.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Algorithm design in Java, C, and Python</li>
+      <li>Data structures (lists, trees, hashmaps)</li>
+      <li>Modular programming and Makefile automation</li>
+      <li>Testing, debugging, and performance analysis</li>
+      <li>Collaborative software development</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Each assignment implements a key algorithm or data structure from scratch (e.g., sorting, trees, graph traversals).</li>
+      <li>Emphasis on modular code, with reusable functions and classes.</li>
+      <li>Makefiles automate compilation and testing for C/Java projects.</li>
+      <li>Python scripts focus on readability and rapid prototyping.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Example: Binary search tree insertion in C
+void insert_bst(node_t **root, int value) {
+    if (!*root) {
+        *root = malloc(sizeof(node_t));
+        (*root)->value = value;
+        (*root)->left = (*root)->right = NULL;
+    } else if (value &lt; (*root)->value) {
+        insert_bst(&(*root)->left, value);
+    } else {
+        insert_bst(&(*root)->right, value);
+    }
+}
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Gained fluency in multiple programming languages and paradigms.</li>
+      <li>Developed strong foundations in algorithms and modular design.</li>
+      <li>Improved ability to quickly switch between languages and toolchains.</li>
+    </ul>
+    <a class="github-link" href="https://github.com/adilayman/info0027-projects" target="_blank">View the project on GitHub</a>
+  </div>
+</body>
+</html>
