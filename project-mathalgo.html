@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MathAlgo – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link:hover { background: #1e3799; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MathAlgo</h1>
+    <div class="lang-list">
+      <span class="lang-tag">C</span>
+      <span class="lang-tag">Makefile</span>
+    </div>
+    <h2>Project Description</h2>
+    <p>
+      Implementation of sparse matrix operations for scientific computing. Focused on efficient storage and manipulation of large, mostly-zero matrices.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Data structures for sparse matrix representation (e.g., CSR/COO formats)</li>
+      <li>Efficient matrix arithmetic (add, multiply, transpose)</li>
+      <li>Memory management in C</li>
+      <li>Command-line interface and file I/O</li>
+      <li>Testing and validation with numerical datasets</li>
+    </ul>
+    <h2>Code Logic</h2>
+    <ul>
+      <li>Custom structs represent matrices by only storing non-zero entries (row, column, value).</li>
+      <li>Arithmetic functions traverse sparse representations for addition/multiplication.</li>
+      <li>Efficient memory allocation and deallocation to avoid leaks.</li>
+      <li>CLI allows loading, saving, and operating on matrices from files or user input.</li>
+      <li>Includes tests for correctness and benchmarks for performance.</li>
+    </ul>
+    <h2>Sample Code</h2>
+    <pre><code>// Multiply two sparse matrices in C
+for (int i = 0; i &lt; A.rows; ++i)
+  for (int k = A.row_ptr[i]; k &lt; A.row_ptr[i+1]; ++k)
+    for (int j = 0; j &lt; B.cols; ++j)
+      result[i][j] += A.values[k] * B[A.col_idx[k]][j];
+    </code></pre>
+    <h2>Results & Impact</h2>
+    <ul>
+      <li>Handled matrices 1000x larger than dense implementations could process.</li>
+      <li>Significant speed and memory improvements for sparse data.</li>
+      <li>Used in coursework and as a utility for other numerical projects.</li>
+    </ul>
+    <a class="github-link" href="https://github.com/arnaudcfx/MathAlgo" target="_blank">View the project on GitHub</a>
+  </div>
+</body>
+</html>
