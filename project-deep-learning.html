@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deep Learning Image Classifier – Portfolio Example</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    h1 { text-align: center; margin-bottom: 0.5em; color: #1e3799; }
+    h2 { color: #5e6ad2; margin-top: 2em;}
+    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    .screenshot { text-align: center; margin: 2em 0; }
+    .screenshot img { max-width: 100%; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,0.07);}
+    .team { color: #333; font-size: 1.1em; }
+    .lang-list {
+      display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.5em 0 1em 0;
+    }
+    .lang-tag {
+      background: #eef0fb;
+      color: #5e6ad2;
+      border-radius: 4px;
+      padding: 2px 10px;
+      font-size: 0.95em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .notice {
+      background: #fff3cd;
+      color: #856404;
+      border-radius: 6px;
+      padding: 1em 1.2em;
+      margin-top: 2em;
+      font-size: 1.05em;
+      border-left: 5px solid #ffe066;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Deep Learning Image Classifier<br><span style="font-size:0.7em;color:#666;">University of Liège – 2025</span></h1>
+    <div class="team">
+      <b>Team project</b> with fellow students (names anonymized for privacy).
+    </div>
+    <div class="lang-list">
+      <span class="lang-tag">Python</span>
+      <span class="lang-tag">PyTorch</span>
+      <span class="lang-tag">Jupyter Notebook</span>
+      <span class="lang-tag">Machine Learning</span>
+    </div>
+    <h2>Summary</h2>
+    <p>
+      Within the Deep Learning course at the University of Liège, we developed a convolutional neural network (CNN) to classify images. The goal was to experiment with different network architectures and analyze their performance on a complex dataset.
+    </p>
+    <h2>Skills & Technologies</h2>
+    <ul>
+      <li>Data pre-processing and augmentation</li>
+      <li>Design and training of several CNN architectures</li>
+      <li>Hyperparameter optimization</li>
+      <li>Overfitting management (dropout, data augmentation)</li>
+      <li>Collaborative coding with GitHub</li>
+    </ul>
+    <h2>Sample Code (non-confidential excerpt)</h2>
+    <pre><code>
+import torch
+import torch.nn as nn
+
+class SimpleCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(3, 32, 3, padding=1)
+        self.relu = nn.ReLU()
+        self.pool = nn.MaxPool2d(2, 2)
+        self.fc = nn.Linear(32*16*16, 10)
+
+    def forward(self, x):
+        x = self.pool(self.relu(self.conv1(x)))
+        x = x.view(x.size(0), -1)
+        x = self.fc(x)
+        return x
+    </code></pre>
+    <h2>Results</h2>
+    <ul>
+      <li>Final test accuracy: <b>92%</b></li>
+      <li>Detailed documentation and report delivered to the teacher</li>
+    </ul>
+    <div class="screenshot">
+      <img src="https://dummyimage.com/720x300/dae1f8/5e6ad2.png&text=Sample+result+visualization" alt="Sample result visualization (anonymized)">
+      <div style="font-size:0.92em;color:#777;">(Anonymized visualization of project results)</div>
+    </div>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
+  </div>
+</body>
+</html>
