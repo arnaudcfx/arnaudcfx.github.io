@@ -2,65 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>customer-counter – Project Portfolio</title>
+  <title>Customer Counter – Project Portfolio</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
+    .container { max-width: 850px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
     h1 { text-align: center; color: #1e3799; }
     h2 { color: #5e6ad2; margin-top: 2em;}
     pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
     .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
     .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: bold; }
     .github-link:hover { background: #1e3799; }
+    ul li { margin-bottom: 0.75em; }
+    .section { margin-bottom: 2em; }
+    .table { background: #f3f3fa; border-radius: 6px; padding: 1em; overflow-x: auto; font-size: 0.97em; }
+    .small { font-size: 0.93em; color: #888; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>customer-counter</h1>
+    <h1>Automated Customer Counter (IR Barrier)</h1>
     <div class="lang-list">
-      <span class="lang-tag">Assembly</span>
+      <span class="lang-tag">Embedded C / Assembly</span>
+      <span class="lang-tag">Microcontroller (PIC16F1789)</span>
+      <span class="lang-tag">Electronics</span>
       <span class="lang-tag">Makefile</span>
-      <span class="lang-tag">Other</span>
     </div>
-    <h2>Project Description</h2>
-    <p>
-      INFO-2055 Embedded Systems project: a microcontroller-based customer counter for real-time monitoring of entries in a store or room. Designed for reliability, accuracy, and ease of integration in physical environments.
-    </p>
-    <h2>Skills & Technologies</h2>
-    <ul>
-      <li>Embedded Assembly programming (targeting AVR microcontrollers)</li>
-      <li>Real-time interrupt handling</li>
-      <li>Digital sensor interfacing (IR, pushbuttons)</li>
-      <li>Makefile automation for firmware build & flash</li>
-      <li>Hardware debugging and oscilloscope use</li>
-    </ul>
-    <h2>Code Logic</h2>
-    <ul>
-      <li>On each sensor activation (entry/exit), an interrupt service routine (ISR) is triggered.</li>
-      <li>The ISR debounces the input, increments or decrements a memory-stored counter, and updates the display.</li>
-      <li>All I/O (buttons, display) is handled via direct memory-mapped register manipulation.</li>
-      <li>A main loop keeps the system in low-power until an interrupt occurs.</li>
-      <li>Build automation is handled by a Makefile and code is modularized for easy testing.</li>
-    </ul>
-    <h2>Sample Code</h2>
-    <pre><code>; Interrupt Service Routine for Button Press
-ISR(INT0_vect)
-    ; Debounce input and increment counter
-    lds   r16, customer_count
-    inc   r16
-    sts   customer_count, r16
-    ; Update display routine
-    rcall update_display
-    reti
-    </code></pre>
-    <h2>Results & Impact</h2>
-    <ul>
-      <li>Accurately counted customer entries/exits in real-time with zero missed events in tests.</li>
-      <li>Tested in a lab environment; validated for robustness against electrical noise/glitches.</li>
-      <li>Gained deep experience in real-time embedded system design and debugging.</li>
-    </ul>
+
+    <div class="section">
+      <h2>1. Introduction & Project Idea</h2>
+      <p>
+        The project aims to develop an automated customer counter for shops using an infrared (IR) system. This system helps regulate the number of customers entering a store, addressing sanitary restrictions by replacing inefficient manual counting or trolley-based methods with reliable technology.
+      </p>
+      <p>
+        The solution consists of two IR-emitting circuits and a central receiving circuit, enabling real-time counting of customers entering and leaving the premises.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. System Overview & Operation</h2>
+      <ul>
+        <li>
+          <b>IR Emitters:</b> Two circuits at the entrance and exit, each generating a 38kHz modulated IR signal.
+        </li>
+        <li>
+          <b>IR Receiver (Central Unit):</b> Equipped with two IR receivers (left/right), four configuration buttons, and two 7-segment displays to show the remaining allowed customers.
+        </li>
+        <li>
+          <b>Workflow:</b>
+          <ul>
+            <li>Manager sets max allowed customers with buttons; confirmed via displays.</li>
+            <li>On entry: counter decrements, displays update.</li>
+            <li>On exit: counter increments, displays update.</li>
+            <li>Mode switching and reset possible via dedicated buttons.</li>
+          </ul>
+        </li>
+        <li>
+          IR detection is based on voltage changes from the receivers (0V = beam detected, ~5V = beam interrupted).
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>3. Hardware Components</h2>
+      <div class="table">
+        <b>Receiver Circuit:</b>
+        <ul>
+          <li>PIC16F1789 microcontroller – core logic unit</li>
+          <li>2x TSOP58438 IR receivers – robust, immune to noise</li>
+          <li>2x LS0565SRWK 7-segment displays – red, common cathode</li>
+          <li>4x Pushbuttons – for configuration and reset</li>
+          <li>L7805CV voltage regulator, resistors, capacitors, LEDs, battery holder, etc.</li>
+        </ul>
+        <b>Emitter Circuits (x2):</b>
+        <ul>
+          <li>TSHF5410 IR emitter LEDs</li>
+          <li>TLC555IP timer (generates 38kHz modulation)</li>
+          <li>Supporting discrete components (resistors, capacitors, diodes, battery, etc.)</li>
+        </ul>
+        <p class="small">Component selection prioritized compatibility, price, and availability. The receiver uses modulated IR for ambient light immunity, as advised by experts.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>4. Schematics & Physical Setup</h2>
+      <ul>
+        <li>
+          <b>Receiver Circuit:</b> Central logic, display, and IR detection; supports setup and operation modes with visual feedback (status LED).
+          <br>
+          <span class="small">[Schematic available in project report, not shown here]</span>
+        </li>
+        <li>
+          <b>Emitter Circuits:</b> Each placed at entry/exit, continuously generating IR beams for the barrier.
+        </li>
+        <li>
+          <b>User Interface:</b> Four buttons allow the user to reset, select, increment, or decrement the maximum customer count.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. Software Architecture</h2>
+      <ul>
+        <li>
+          <b>Round Robin with Interrupts:</b> Chosen for simplicity and responsiveness; interrupts handle barrier and button events. No task prioritization needed.
+        </li>
+        <li>
+          <b>Modes:</b>
+          <ul>
+            <li><b>Configuration:</b> Set maximum allowed customers; button events handled via interrupts.</li>
+            <li><b>Operation:</b> Entry/exit detection and count update; display refresh outside ISRs to keep routines short.</li>
+          </ul>
+        </li>
+        <li>
+          <b>Display Updates:</b> Performed only on value changes for efficiency.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>6. Code Structure (C-like Pseudocode)</h2>
+      <pre><code>
+volatile bool mode = 0; // 0: setup, 1: operating
+volatile bool selectedDisplay = 0;
+volatile bool needUpdateDisplay = 0;
+volatile int limitTenDigit = 0, limitUnitDigit = 0;
+volatile int tenDigit = 0, unitDigit = 0;
+volatile int maxDigit = 9;
+
+interrupt void setup () { /* Handles button events in setup mode */ }
+interrupt void checkBarrier () { /* Handles entry/exit detection in operating mode */ }
+void update_display () { /* Refresh 7-segments in operating mode */ }
+void update_setup_display () { /* Refresh 7-segments in setup mode */ }
+void main () {
+  for (;;) {
+    if (mode == 0) { /* Setup buttons logic */ }
+    else { /* Operating logic and reset detection */ }
+  }
+}
+      </code></pre>
+      <p class="small">Full assembly and C code available in the <a href="https://github.com/maxgoffart/customer-counter" target="_blank">project repository</a>.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Results & Learnings</h2>
+      <ul>
+        <li>Reliable real-time counting of customers; no missed events in lab tests.</li>
+        <li>Successfully handled electrical noise thanks to modulated IR and TSOP receivers.</li>
+        <li>Learned the importance of correct sensor selection and robust circuit design.</li>
+        <li>Achieved a practical solution with affordable microcontroller hardware.</li>
+        <li>Improved understanding of embedded interrupts, digital interfacing, and debugging.</li>
+      </ul>
+      <p class="small">
+        See demo video and schematics in the project documentation.
+      </p>
+    </div>
+
     <a class="github-link" href="https://github.com/maxgoffart/customer-counter" target="_blank">View the project on GitHub</a>
   </div>
 </body>
