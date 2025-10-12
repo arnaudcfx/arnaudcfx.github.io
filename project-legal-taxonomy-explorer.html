@@ -12,7 +12,7 @@
     pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
     .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
     .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: bold; }
     .github-link:hover { background: #1e3799; }
   </style>
 </head>
@@ -26,38 +26,48 @@
     </div>
     <h2>Project Description</h2>
     <p>
-      Automates the extraction of hierarchical taxonomies from fund-related legal documents. Converts unstructured text into structured knowledge graphs, helping attorneys quickly draft and review prospectuses, agreements, and constitutional documents.
+      <b>Automating the "Fund Review" Process in Law Firms with AI and Hybrid Knowledge Graphs</b><br>
+      This project is based on the thesis: <i>"Automate Law Firms 'Fund Review' processes using AI Document Intelligence and Generative AI"</i>. <br><br>
+      The "Fund Review" process for asset management companies requires legal experts to analyze investment funds across regulatory, legal, financial, and operational dimensions. Traditionally, this is a highly manual, repetitive, and error-prone task. This project introduces an AI-powered solution that automates the analysis and classification of legal documents—such as fund prospectuses, constitutions, and agreements—by combining Document Intelligence, regex-based parsing, decision trees, and Generative AI.
+    </p>
+    <p>
+      Unlike traditional supervised models—which struggle due to the lack of labeled legal data—this solution builds a hybrid architecture: a symbolic knowledge graph extracted from legal texts, paired with a Generative AI model used as a language interface (not as a source of truth). Legal reasoning and document structure are externalized and grounded in this knowledge graph, enabling legally valid and interpretable outputs.
+    </p>
+    <ul>
+      <li>Custom structural parsing (with regex and semantic analysis) segments legal documents into hierarchical, semantically-coherent chunks.</li>
+      <li>Entity and relationship extraction (using LLMs and ontology alignment) builds a knowledge graph capturing the legal content and cross-document references.</li>
+      <li>Community detection algorithms (e.g., Louvain method) induce a legal taxonomy—clusters of related clauses and concepts—directly from the graph without relying on predefined categories.</li>
+      <li>Generative AI provides natural language labels and enables context-aware search and summarization, always grounded in the underlying graph.</li>
+    </ul>
+    <p>
+      The result: a fully automated pipeline that transforms unstructured legal corpora into a navigable taxonomy, supporting attorneys in drafting fund review reports with improved efficiency, compliance, and reduced error. The framework is implemented in Python, with plans for React/.NET Core/Azure integration.
     </p>
     <h2>Skills & Technologies</h2>
     <ul>
-      <li>Python for NLP and automation</li>
-      <li>Text parsing, regular expressions, and tree data structures</li>
-      <li>HTML reporting and Docker for deployment</li>
-      <li>Knowledge graph generation</li>
-      <li>Legal tech domain knowledge</li>
+      <li>Knowledge graph construction and ontology alignment</li>
+      <li>Regex-based and semantic parsing of legal documents</li>
+      <li>Community detection and unsupervised taxonomy extraction</li>
+      <li>Generative AI for language labeling and retrieval (Graph-RAG)</li>
+      <li>Python, Docker, and cloud deployment (Azure)</li>
+      <li>Legal tech domain expertise (fund prospectuses, compliance, legal classification)</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
-      <li>Parses raw legal documents using regex and NLP techniques.</li>
-      <li>Identifies key legal terms and hierarchy based on document structure and language patterns.</li>
-      <li>Builds a tree (taxonomy) of concepts and outputs as HTML and/or graph data.</li>
-      <li>Can export the taxonomy to structured formats for further analysis or visualization.</li>
-      <li>Dockerfile ensures reproducibility and easy cloud deployment.</li>
+      <li>Parse and segment documents into legal chunks using document-specific rules.</li>
+      <li>Extract entities and relationships with LLM-assisted functions; build a knowledge graph.</li>
+      <li>Run community detection to find clusters representing legal categories.</li>
+      <li>Label clusters with LLM and expose as a hierarchical taxonomy for attorneys.</li>
+      <li>Enable retrieval and drafting of legal text via Graph-augmented RAG.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code># Pseudocode: Extract headings and build taxonomy tree
-for line in document:
-    if is_heading(line):
-        current_node = add_node_to_tree(line)
-    else:
-        current_node.add_content(line)
-    </code></pre>
     <h2>Results & Impact</h2>
     <ul>
-      <li>Enabled rapid review and drafting of complex legal documents.</li>
-      <li>Reduced manual error and time spent on taxonomy extraction.</li>
-      <li>Demoed to legal professionals for workflow improvement.</li>
+      <li>Automated creation of legal knowledge graphs and taxonomies from raw legal corpora.</li>
+      <li>Enabled rapid, accurate fund review drafting with less manual effort and improved compliance.</li>
+      <li>Demonstrated hybrid AI + symbolic reasoning for trustworthy, interpretable legal NLP.</li>
     </ul>
+    <p>
+      Pour consulter la thèse complète : <a href="http://hdl.handle.net/2268.2/24860" target="_blank">http://hdl.handle.net/2268.2/24860</a> <span style="color:#888">(accès restreint)</span>
+    </p>
     <a class="github-link" href="https://github.com/arnaudcfx/Legal-Taxonomy-Explorer" target="_blank">View the project on GitHub</a>
   </div>
 </body>
