@@ -18,6 +18,10 @@
       --gray: #64748b;
       --gray-light: #e2e8f0;
       --success: #10b981;
+      --github: #333;
+      --gitlab: #fc6d26;
+      --private: #ef4444;
+      --public: #10b981;
       --border-radius: 12px;
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -146,6 +150,7 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 1rem;
+      position: relative;
     }
     
     .repo-card h3 {
@@ -179,6 +184,8 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-top: auto;
+      position: relative;
+      padding-right: 80px; /* Space for platform badge */
     }
     
     .lang-tag {
@@ -195,6 +202,51 @@
       background: var(--primary-light);
       color: var(--primary);
       border-color: var(--primary-light);
+    }
+    
+    /* Badge styles - Perfect placement */
+    .visibility-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .public-badge {
+      background: var(--public);
+      color: white;
+    }
+    
+    .private-badge {
+      background: var(--private);
+      color: white;
+    }
+    
+    .platform-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .github-badge {
+      background: var(--github);
+      color: white;
+    }
+    
+    .gitlab-badge {
+      background: var(--gitlab);
+      color: white;
     }
     
     footer {
@@ -218,6 +270,10 @@
       .container {
         padding: 1.5rem 1rem;
       }
+      
+      .lang-list {
+        padding-right: 70px;
+      }
     }
   </style>
 </head>
@@ -240,25 +296,26 @@
     <div class="repo-grid">
       <!-- customer-counter -->
       <a class="repo-card" href="project-customer-counter.html" data-categories="embedded">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Customer Counter</h3>
           <span class="repo-badge">Embedded</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Embedded microcontroller-based customer counter for real-time entry/exit tracking with optimized assembly implementation.</p>
         <div class="lang-list">
           <span class="lang-tag primary">Assembly</span>
           <span class="lang-tag">Makefile</span>
           <span class="lang-tag">Embedded C</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- High-Performance-Scientific-Computing -->
       <a class="repo-card" href="project-high-performance-scientific-computing.html" data-categories="c python">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>High Performance Scientific Computing</h3>
           <span class="repo-badge">Parallel Computing</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Parallel and scientific computing group project: efficient algorithms and data analysis with performance optimization.</p>
         <div class="lang-list">
@@ -266,30 +323,32 @@
           <span class="lang-tag">Jupyter Notebook</span>
           <span class="lang-tag">Shell</span>
           <span class="lang-tag">MPI</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- MathAlgo -->
       <a class="repo-card" href="project-mathalgo.html" data-categories="c">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>MathAlgo</h3>
           <span class="repo-badge">Numerical Computing</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Sparse matrix operations for scientific computing with efficient storage algorithms and memory optimization techniques.</p>
         <div class="lang-list">
           <span class="lang-tag primary">C</span>
           <span class="lang-tag">Makefile</span>
           <span class="lang-tag">Algorithms</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- INFO0009-Site -->
       <a class="repo-card" href="project-info0009-site.html" data-categories="web">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Dynamic Web Platform</h3>
           <span class="repo-badge">Full Stack</span>
+          <span class="visibility-badge private-badge">Private</span>
         </div>
         <p>Dynamic web platform for university coursework with PHP backend and Hack language implementation.</p>
         <div class="lang-list">
@@ -297,72 +356,77 @@
           <span class="lang-tag">Hack</span>
           <span class="lang-tag">HTML/CSS</span>
           <span class="lang-tag">MySQL</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- OS Projects -->
       <a class="repo-card" href="project-projet1-os.html" data-categories="os c">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>OS: Process Management</h3>
           <span class="repo-badge">Systems Programming</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>OS group project: basic process management and scheduling algorithms implementation.</p>
         <div class="lang-list">
           <span class="lang-tag primary">C</span>
           <span class="lang-tag">Makefile</span>
           <span class="lang-tag">Systems</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <a class="repo-card" href="project-projet2-os.html" data-categories="os c">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>OS: Memory Management</h3>
           <span class="repo-badge">Systems Programming</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>OS group project: advanced process and memory management with virtual memory implementation.</p>
         <div class="lang-list">
           <span class="lang-tag primary">C</span>
           <span class="lang-tag">Memory Management</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <a class="repo-card" href="project-projet3-os.html" data-categories="os c">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>OS: Full System Management</h3>
           <span class="repo-badge">Systems Programming</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>OS group project: complete process, memory, and I/O management system with device drivers.</p>
         <div class="lang-list">
           <span class="lang-tag primary">C</span>
           <span class="lang-tag">Makefile</span>
           <span class="lang-tag">I/O Systems</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- info0004-project-3 -->
       <a class="repo-card" href="project-info0004-project-3.html" data-categories="c++">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Advanced OOP Project</h3>
           <span class="repo-badge">Software Design</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Advanced object-oriented programming project with C++ and implementation of design patterns.</p>
         <div class="lang-list">
           <span class="lang-tag primary">C++</span>
           <span class="lang-tag">Makefile</span>
           <span class="lang-tag">Design Patterns</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- info0027-projects -->
       <a class="repo-card" href="project-info0027-projects.html" data-categories="java c python">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Algorithms & Data Structures</h3>
           <span class="repo-badge">CS Fundamentals</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Collection of algorithm and data structure assignments implementing various computational problems.</p>
         <div class="lang-list">
@@ -370,15 +434,16 @@
           <span class="lang-tag">C</span>
           <span class="lang-tag">Python</span>
           <span class="lang-tag">Makefile</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- Legal-Taxonomy-Explorer -->
       <a class="repo-card" href="project-legal-taxonomy-explorer.html" data-categories="python web">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Legal Taxonomy Explorer</h3>
           <span class="repo-badge">NLP & Data Engineering</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Automated extraction of hierarchical taxonomies from legal documents for knowledge graphs using NLP techniques.</p>
         <div class="lang-list">
@@ -386,30 +451,32 @@
           <span class="lang-tag">HTML</span>
           <span class="lang-tag">Docker</span>
           <span class="lang-tag">NLP</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- Code -->
       <a class="repo-card" href="project-code.html" data-categories="python">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Automation & Scripting</h3>
           <span class="repo-badge">Productivity Tools</span>
+          <span class="visibility-badge private-badge">Private</span>
         </div>
         <p>Collection of Python scripts for automation, data processing, and rapid prototyping of solutions.</p>
         <div class="lang-list">
           <span class="lang-tag primary">Python</span>
           <span class="lang-tag">Automation</span>
           <span class="lang-tag">Scripting</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- HeroTrainer -->
       <a class="repo-card" href="project-herotrainer.html" data-categories="java web">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>HeroTrainer App</h3>
           <span class="repo-badge">Cross-Platform</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Cross-platform training application with Java backend, Flutter/Dart UI, and HTML integration.</p>
         <div class="lang-list">
@@ -417,15 +484,16 @@
           <span class="lang-tag">Dart</span>
           <span class="lang-tag">HTML</span>
           <span class="lang-tag">Flutter</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- vsopcompiler -->
       <a class="repo-card" href="project-vsopcompiler.html" data-categories="c++">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>VSOP Compiler</h3>
           <span class="repo-badge">Compiler Design</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Full compiler for the VSOP language with lexer, parser, semantic analysis, and LLVM code generation.</p>
         <div class="lang-list">
@@ -433,15 +501,16 @@
           <span class="lang-tag">Yacc</span>
           <span class="lang-tag">Lex</span>
           <span class="lang-tag">LLVM</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- INFO9014-Discussion-Forum -->
       <a class="repo-card" href="project-info9014-discussion-forum.html" data-categories="web">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Discussion Forum Platform</h3>
           <span class="repo-badge">Web Application</span>
+          <span class="visibility-badge private-badge">Private</span>
         </div>
         <p>Web-based forum platform for student and instructor discussions with real-time features.</p>
         <div class="lang-list">
@@ -449,15 +518,16 @@
           <span class="lang-tag">HTML</span>
           <span class="lang-tag">CSS</span>
           <span class="lang-tag">Node.js</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- Projet Deep Learning -->
       <a class="repo-card" href="project-projet-deep-learning.html" data-categories="python">
-        <span class="gitlab-badge">Github</span>
         <div class="card-header">
           <h3>Deep Learning Project</h3>
           <span class="repo-badge">AI/ML</span>
+          <span class="visibility-badge public-badge">Public</span>
         </div>
         <p>Team project implementing convolutional neural networks for image classification using PyTorch.</p>
         <div class="lang-list">
@@ -465,30 +535,32 @@
           <span class="lang-tag">PyTorch</span>
           <span class="lang-tag">Jupyter</span>
           <span class="lang-tag">CNN</span>
+          <span class="platform-badge github-badge">GitHub</span>
         </div>
       </a>
       
       <!-- SPEAM 2023-2024 Team 6 -->
       <a class="repo-card" href="project-speam-team6.html" data-categories="python">
-        <span class="gitlab-badge">Gitlab</span>
         <div class="card-header">
           <h3>SPEAM Academic Project</h3>
           <span class="repo-badge">Team Collaboration</span>
+          <span class="visibility-badge private-badge">Private</span>
         </div>
         <p>Academic group project for SPEAM, Université de Liège. Collaborative work on advanced engineering topics.</p>
         <div class="lang-list">
           <span class="lang-tag primary">Python</span>
           <span class="lang-tag">Jupyter</span>
           <span class="lang-tag">Data Analysis</span>
+          <span class="platform-badge gitlab-badge">GitLab</span>
         </div>
       </a>
       
       <!-- Distributed Computing MapReduce & Spark -->
       <a class="repo-card" href="project-distributed-computing-mapreduce-and-spark.html" data-categories="python">
-        <span class="gitlab-badge">Gitlab</span>
         <div class="card-header">
           <h3>Distributed Computing</h3>
           <span class="repo-badge">Big Data</span>
+          <span class="visibility-badge private-badge">Private</span>
         </div>
         <p>Distributed data processing using MapReduce and Spark frameworks for large-scale computations.</p>
         <div class="lang-list">
@@ -496,6 +568,7 @@
           <span class="lang-tag">Spark</span>
           <span class="lang-tag">MapReduce</span>
           <span class="lang-tag">Hadoop</span>
+          <span class="platform-badge gitlab-badge">GitLab</span>
         </div>
       </a>
     </div>
