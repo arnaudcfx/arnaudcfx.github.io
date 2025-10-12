@@ -9,10 +9,10 @@
     .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
     h1 { text-align: center; color: #1e3799; }
     h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    ul { margin-bottom: 1.5em; }
     .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
     .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: bold; }
     .github-link:hover { background: #1e3799; }
   </style>
 </head>
@@ -28,38 +28,46 @@
     </div>
     <h2>Project Description</h2>
     <p>
-      A full compiler for the VSOP language, created as a systems programming project. The compiler translates VSOP source code to LLVM bytecode, supporting custom language features and optimizations.
+      A full compiler for the VSOP programming language, developed as a systems programming project. The compiler translates VSOP source code into LLVM intermediate representation (IR), supporting custom language features and basic code generation for the x86-64 architecture.
     </p>
+    <p>
+      The implementation is structured in four main modules:
+    </p>
+    <ul>
+      <li>
+        <b>Lexical Analysis:</b> A Flex lexer scans the input, producing a stream of tokens. Tokens include operators, keywords, identifiers, and literals, with robust handling for edge cases (e.g., integer literals, string literals, invalid input). The lexer is split into definitions, rules, and user code. Notably, string literal recognition required extensive fine-tuning for correctness.
+      </li>
+      <li>
+        <b>Syntax Analysis:</b> A Bison parser processes tokens to build an abstract syntax tree (AST) according to VSOP grammar rules. The AST is object-oriented, with nodes for each syntactic element (e.g., expressions, classes). Precedence and associativity rules are defined to resolve parsing ambiguities. The parser constructs the tree in a way that facilitates both semantic analysis and code generation.
+      </li>
+      <li>
+        <b>Semantic Analysis:</b> The AST is traversed with a <i>visitor pattern</i> to perform type-checking. Multiple passes (visitors) are used: one to record class hierarchies, another to detect inheritance cycles, a third to record class members, and a final pass to check types and annotate expressions. This modular approach makes the analysis extensible but adds some code redundancy.
+      </li>
+      <li>
+        <b>Code Generation:</b> An LLVM visitor traverses the AST and emits LLVM IR. Shared pointers ensure proper management of context, builder, and module. Each class node generates a vtable (virtual method table) for dynamic dispatch. Target triple is set to x86_64-pc-linux-gnu for compatibility. Method calls leverage vtable lookups for correct function resolution.
+      </li>
+    </ul>
     <h2>Skills & Technologies</h2>
     <ul>
-      <li>C++ for compiler modules (parsing, AST, codegen)</li>
-      <li>Lex and Yacc for lexical/syntax analysis</li>
-      <li>LLVM for intermediate code generation and optimization</li>
+      <li>C++ for compiler core, AST, visitors, and codegen</li>
+      <li>Flex (Lex) and Bison (Yacc) for lexical and syntax analysis</li>
+      <li>LLVM API for IR generation and backend targeting</li>
       <li>Makefile for build automation</li>
-      <li>Unit testing, debugging, and CI pipelines</li>
+      <li>Unit testing, debugging, and error reporting</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
-      <li>Lex and Yacc define the lexical and syntactic structure of the VSOP language.</li>
-      <li>C++ modules build an abstract syntax tree (AST) and perform semantic analysis (type checking, etc.).</li>
-      <li>Generates LLVM IR, which is then compiled to target machine code.</li>
-      <li>Implements error handling, reporting, and code optimizations.</li>
+      <li>Lexer produces tokens, handling keywords, operators, literals, and errors</li>
+      <li>Parser builds AST nodes with clear type and value propagation</li>
+      <li>Visitor pattern enables clean, multi-pass semantic analysis</li>
+      <li>LLVM IR generated per AST node, with vtable support for classes and method calls</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Example: AST node for binary operator in C++
-class BinOpNode : public ASTNode {
-    ASTNode *left, *right;
-    std::string op;
-    Value* codegen() {
-        // Generate code for left and right, then combine
-    }
-};
-    </code></pre>
     <h2>Results & Impact</h2>
     <ul>
-      <li>Successfully parsed and compiled custom VSOP programs to LLVM IR.</li>
-      <li>Learned the full pipeline of language design, parsing, and compilation.</li>
-      <li>Practiced debugging at the intersection of C++, parsing tools, and LLVM.</li>
+      <li>Successfully parses, type-checks, and compiles VSOP programs to LLVM IR</li>
+      <li>Demonstrates the full pipeline from language specification to code generation</li>
+      <li>Highlights challenges in string parsing, visitor pattern extensibility, and vtable codegen</li>
+      <li>Some known limitations: no advanced code optimizations and incomplete test coverage (not all platform tests pass)</li>
     </ul>
     <a class="github-link" href="https://github.com/arnaudcfx/vsopcompiler" target="_blank">View the project on GitHub</a>
   </div>
