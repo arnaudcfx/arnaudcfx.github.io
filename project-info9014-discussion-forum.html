@@ -2,66 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>INFO9014-Discussion-Forum – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Knowledge Representation and Reasoning – Ontology Project Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3 { color: #2563eb; }
+    h1 { text-align: center; margin-bottom: 2rem; font-size: 2em; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center; margin: 1.5em 0; }
+    .lang-tag { background: #dbeafe; color: #1e40af; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .github-link { display: block; background: #2563eb; color: #fff; border-radius: 8px; padding: 0.9em 1.2em; text-align: center; margin-top: 2.5em; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+    .github-link:hover { background: #1e3a8a; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>INFO9014-Discussion-Forum</h1>
+    <h1>Knowledge Representation and Reasoning – Ontology Project: Discussion Forum</h1>
     <div class="lang-list">
-      <span class="lang-tag">JavaScript</span>
-      <span class="lang-tag">HTML</span>
-      <span class="lang-tag">CSS</span>
-      <span class="lang-tag">Jupyter Notebook</span>
+      <span class="lang-tag">OWL 2 RL</span>
+      <span class="lang-tag">RDF</span>
+      <span class="lang-tag">R2RML</span>
+      <span class="lang-tag">MySQL</span>
+      <span class="lang-tag">Protégé</span>
+      <span class="lang-tag">Python (rdflib)</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>Project Overview</h2>
     <p>
-      Web-based forum platform developed for the INFO9014 course, enabling community interaction, topic creation, and threaded discussions for students and instructors.
+      This project focuses on developing an <strong>ontology for online discussion forums</strong> as part of the Knowledge Representation and Reasoning course. The goal was to model how forums, threads, posts, users, and relationships interact in an online community, and then map this relational data to RDF using <strong>R2RML</strong> to build a <strong>knowledge graph</strong>. The ontology enables semantic querying and reasoning on forum data.
     </p>
-    <h2>Skills & Technologies</h2>
-    <ul>
-      <li>JavaScript for client-side logic and interactivity</li>
-      <li>HTML/CSS for layout and responsive design</li>
-      <li>Dynamic DOM manipulation and AJAX</li>
-      <li>Basic backend integration (API or server-side scripting)</li>
-      <li>Data visualization with Jupyter Notebook</li>
-    </ul>
-    <h2>Code Logic</h2>
-    <ul>
-      <li>Implements topic listing, post creation, and threaded replies with dynamic JS.</li>
-      <li>Uses AJAX or fetch calls to submit and load data asynchronously.</li>
-      <li>CSS enables responsive layouts and user-friendly UI.</li>
-      <li>Jupyter Notebooks may analyze forum usage data or visualize content statistics.</li>
-    </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Add new post (simplified JS)
-function addPost(topicId, content) {
-    fetch('/api/newpost', {
-        method: 'POST',
-        body: JSON.stringify({topicId, content}),
-        headers: {'Content-Type': 'application/json'}
-    }).then(updateForumDisplay);
-}
-    </code></pre>
-    <h2>Results & Impact</h2>
-    <ul>
-      <li>Facilitated student discussion and collaboration during course projects.</li>
-      <li>Demonstrated modern frontend techniques and asynchronous data flow.</li>
-      <li>Improved group communication and documentation skills.</li>
-    </ul>
-    <div class="notice">
-      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+
+    <div class="photo-gallery">
+      <img src="images/forum_database_model.png" alt="Forum Database Model">
+      <img src="images/ontology_structure.png" alt="Ontology Structure Diagram">
+      <img src="images/graph_visualization.png" alt="Knowledge Graph Visualization">
     </div>
+
+    <h2>Information System Design</h2>
+    <p>
+      The project began by creating a <strong>relational database</strong> for the forum containing entities such as users, posts, threads, categories, and roles. Constraints ensured data consistency and prevented duplicates. This schema served as the foundation for the ontology mapping.
+    </p>
+
+    <h2>Ontology Design and Implementation</h2>
+    <ul>
+      <li>Profile chosen: <strong>OWL 2 RL</strong> for scalable reasoning with adequate expressiveness.</li>
+      <li>Classes include: <em>Forum, Thread, Post, User, Profile, Role, Tag, Category</em>.</li>
+      <li>Object properties like <em>hasProfile</em>, <em>isSubscribedToForum</em>, and <em>hasTag</em> model relationships.</li>
+      <li>Inheritance introduced with a <em>SuperUser</em> class extending <em>User</em> for admin/moderator roles.</li>
+      <li>Ontology built and validated using <strong>Protégé</strong> and checked for OWL 2 RL compliance.</li>
+    </ul>
+
+    <h2>Mapping Relational Database to RDF</h2>
+    <ul>
+      <li>Used <strong>R2RML mappings</strong> to generate RDF triples from relational tables.</li>
+      <li>Each table was mapped to an RDF class (e.g., User → forum:User).</li>
+      <li>Predicate-object mappings aligned SQL columns with ontology properties.</li>
+      <li>Reference object maps established relationships via primary and foreign keys.</li>
+      <li>Consistency checked in Protégé with the Ontop plugin and live MySQL database connection.</li>
+    </ul>
+
+    <h2>Knowledge Graph and Queries</h2>
+    <p>
+      The resulting RDF graph was imported into Python using <strong>rdflib</strong> for querying. Non-trivial <strong>SPARQL queries</strong> were designed to analyze user behavior, popular tags, post counts, and forum participation patterns.
+    </p>
+
+    <h2>Demonstration and Visualization</h2>
+    <ul>
+      <li>Ontology visualized using <strong>WebVOWL</strong> for clear class-property relationships.</li>
+      <li>Knowledge graph visualized using <strong>Graphviz</strong> to illustrate user–post–forum interconnections.</li>
+      <li>Planned web-based demonstrator: an application allowing semantic exploration and visualization of forum activity through graph queries.</li>
+    </ul>
+
+    <h2>Conclusions</h2>
+    <p>
+      Through this project, we gained practical experience in ontology engineering, knowledge graph design, and database-to-RDF mapping. We explored how logical modeling and semantic technologies can represent social interaction data and support intelligent querying of complex relational systems.
+    </p>
+
+    <a class="github-link" href="http://www.ontologyforum.org/ontology/" target="_blank">View Ontology and Documentation</a>
+
+    <footer>
+      <p>Knowledge Representation and Reasoning – Ontology Project | University of Liège | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
+
