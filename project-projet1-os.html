@@ -9,7 +9,7 @@
     .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
     h1 { text-align: center; color: #1e3799; }
     h2 { color: #5e6ad2; margin-top: 2em; }
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
+    ul { margin-bottom: 1.5em; }
     .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
     .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
     .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
@@ -20,40 +20,58 @@
     <h1>Projet1-OS</h1>
     <div class="lang-list">
       <span class="lang-tag">C</span>
+      <span class="lang-tag">Linux</span>
+      <span class="lang-tag">ptrace</span>
       <span class="lang-tag">Makefile</span>
     </div>
     <h2>Project Description</h2>
     <p>
-      The first group project in Operating Systems, focusing on foundational OS concepts and the implementation of basic process management and scheduling.
+      Project 1 is a Linux process tracer that implements both a profiler mode and a syscall tracing mode using <code>fork()</code>, <code>waitpid()</code>, and the <code>ptrace</code> API. The parent process controls and inspects the execution of a tracee (child process), enabling in-depth analysis of function calls and system call activity.
     </p>
+    <ul>
+      <li>
+        <b>Profiler mode:</b> Function names and addresses are extracted via <code>nm</code> (using <code>system()</code>). The parent process single-steps the child with <code>PTRACE_SINGLESTEP</code> and fetches each instruction using <code>PTRACE_PEEKTEXT</code> at the address given by <code>eip</code> (<code>PTRACE_GETREGS</code>). By decoding instruction opcodes (little endian: first byte is the opcode), the tracer builds a function call tree, counting instructions executed per function until a return is found. It specifically detects <b>CALL</b> (<code>0xE8</code>) and <b>RET</b> (<code>0xC2</code>, <code>0xC3</code>) opcodes.
+      </li>
+      <li>
+        <b>Syscall mode:</b> System call names are loaded from <code>syscall.txt</code>. The parent sets <code>PTRACE_O_TRACESYSGOOD</code> via <code>PTRACE_SETOPTIONS</code> on the child. With <code>PTRACE_SYSCALL</code>, the tracee stops on each syscall, signaling <code>SIGTRAP</code> (0x80). The parent fetches the syscall number from <code>orig_eax</code> and maps it to its name from the table. Return values of syscalls are ignored, focusing on invocation only.
+      </li>
+    </ul>
+    <h2>Key Implementation Details</h2>
+    <ul>
+      <li>
+        The tracer uses <code>fork()</code> to duplicate the parent process, with the child waiting for execution to be traced.
+      </li>
+      <li>
+        <b>Profiler mode:</b> Builds a tree of function calls and instruction counts via careful opcode analysis and call/return tracking.
+      </li>
+      <li>
+        <b>Syscall mode:</b> Tracks syscalls in real time and logs each invocation without inspecting return values.
+      </li>
+    </ul>
+    <h2>Technical Insights</h2>
+    <ul>
+      <li><b>Opcodes detected:</b> CALL (0xE8), RET (0xC2, 0xC3)</li>
+      <li><b>Many functions before main():</b> Due to library (e.g., libc) initialization and CPU setup before the program's main logic runs.</li>
+      <li><b>Static compilation of tracee:</b> All necessary symbols and libraries are resolved at compile time, reducing runtime syscalls and improving performance for analysis. Dynamically compiled programs require more syscalls (e.g., <code>mmap2</code>, <code>read</code>, <code>access</code>) at startup for loading shared libraries, slowing down tracing.</li>
+    </ul>
     <h2>Skills & Technologies</h2>
     <ul>
-      <li>C programming (systems-level)</li>
-      <li>Process management, context switching</li>
-      <li>Makefile build automation</li>
-      <li>Unit and integration testing of system modules</li>
-      <li>Git for collaborative development</li>
+      <li>Low-level C programming, Linux process control, and system call tracing</li>
+      <li>Use of ptrace API for process inspection and debugging</li>
+      <li>Binary analysis (function address extraction, opcode decoding)</li>
+      <li>Signals, process hierarchy, and Makefile automation</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
-      <li>Implements process creation, switching, and termination using C structs and manual memory management.</li>
-      <li>Scheduler selects the next process to run (e.g., round-robin or priority-based).</li>
-      <li>Interrupt handlers manage time slices and context saving/restoring.</li>
-      <li>Testing framework verifies correct process transitions and system stability.</li>
+      <li>Parent forks and manages the tracee using ptrace and waitpid</li>
+      <li>Profiler mode: single-steps instructions, decodes opcodes, and builds a function call/instruction tree</li>
+      <li>Syscall mode: intercepts and logs syscalls using orig_eax and a syscall name table</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Process context switch (simplified)
-void context_switch(process_t *from, process_t *to) {
-    save_context(from);
-    restore_context(to);
-    current_process = to;
-}
-    </code></pre>
     <h2>Results & Impact</h2>
     <ul>
-      <li>Demonstrated correct process switching and scheduling under simulated OS conditions.</li>
-      <li>Established a strong foundation for more advanced OS projects.</li>
-      <li>Improved team collaboration and code review practices.</li>
+      <li>Demonstrated function-level profiling and syscall tracing on Linux executables</li>
+      <li>Deepened understanding of binary execution, process control, and system call interfaces</li>
+      <li>Developed practical skills in debugging, signal handling, and low-level process monitoring</li>
     </ul>
     <div class="notice">
       The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
