@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INFO0027-1: GPU Batch Maker – Project Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f9fafb; color: #1f2937; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 3rem; }
+    h1, h2, h3 { color: #0ea5e9; }
+    h1 { text-align: center; margin-bottom: 2rem; font-size: 2em; }
+    h2 { border-bottom: 2px solid #e5e7eb; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center; margin: 1.5em 0; }
+    .lang-tag { background: #e0f2fe; color: #0369a1; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    footer { text-align: center; margin-top: 3rem; color: #6b7280; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>INFO0027-1: Project 1 – GPU Batch Maker</h1>
+
+    <div class="lang-list">
+      <span class="lang-tag">C</span>
+      <span class="lang-tag">GPU</span>
+      <span class="lang-tag">CUDA</span>
+      <span class="lang-tag">Valgrind</span>
+      <span class="lang-tag">Performance Analysis</span>
+    </div>
+
+    <h2>Project Overview</h2>
+    <p>
+      This project, developed for the <strong>INFO0027-1 course</strong>, investigates two GPU-based data structures designed for efficient batch address management — <strong>MAGIC1 (Hash Table)</strong> and <strong>MAGIC2 (Ternary Search Trie – TST)</strong>. The objective was to study their time and space complexities under large-scale data constraints and evaluate their behavior in batch-oriented memory operations.
+    </p>
+
+    <h2>Algorithm Explanations</h2>
+    <h3>MAGIC1 – Hash Table</h3>
+    <ul>
+      <li>Uses a <strong>hash table</strong> to map addresses to positions in an auxiliary array.</li>
+      <li>Employs the <strong>djb2 hashing algorithm</strong> (hash * 33 + current byte) and uses modulo table size to compute index positions.</li>
+      <li>If a cell’s batch number doesn’t match the current batch, it is overwritten; otherwise, <strong>quadratic probing</strong> resolves collisions.</li>
+      <li><strong>Reset</strong> simply increments the batch counter and resets the address counter.</li>
+    </ul>
+
+    <h3>MAGIC2 – Ternary Search Trie (TST)</h3>
+    <ul>
+      <li>Each node represents a byte of the address and includes a batch number and reference index.</li>
+      <li>The <strong>reference address</strong> identifies the auxiliary array position corresponding to the address.</li>
+      <li>When a new batch is processed, the TST updates nodes’ batch references and resets inserted addresses.</li>
+      <li>This structure supports efficient traversal and pattern matching, but with higher memory overhead.</li>
+    </ul>
+
+    <div class="photo-gallery">
+      <img src="images/magic1_hash_table.png" alt="MAGIC1 Hash Table Illustration">
+      <img src="images/magic2_tst_structure.png" alt="MAGIC2 Ternary Search Trie Illustration">
+    </div>
+
+    <h2>Performance Study</h2>
+    <p>
+      A comprehensive <strong>performance study</strong> was conducted for both implementations focusing on execution time and memory consumption, tested on <em>ms8xx</em> machines with random 16-byte addresses and varying batch sizes (0–100,000).
+    </p>
+
+    <h3>Time Complexity</h3>
+    <ul>
+      <li><strong>MAGICindex()</strong> in MAGIC2 is about 4× slower than in MAGIC1, as it must traverse multiple byte nodes.</li>
+      <li><strong>MAGICreset()</strong> shows constant-time performance in both implementations, resetting only counters.</li>
+      <li>MAGIC1 offers nearly constant lookup time due to hash-based addressing, while MAGIC2 depends on address size.</li>
+    </ul>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; border-collapse:collapse; margin-top:1rem;">
+      <tr><th>Function</th><th>MAGIC1</th><th>MAGIC2</th></tr>
+      <tr><td>MAGICinit()</td><td>O(maxSize)</td><td>Θ(1)</td></tr>
+      <tr><td>MAGICindex()</td><td>O(1) average</td><td>O(addrSize)</td></tr>
+      <tr><td>MAGICreset()</td><td>Θ(1)</td><td>Θ(1)</td></tr>
+    </table>
+
+    <h3>Space Complexity</h3>
+    <p>
+      Memory usage was profiled using <strong>Valgrind</strong> for both implementations:
+    </p>
+    <ul>
+      <li>With maxSize = 100,000 and addrSize = 16, MAGIC1 uses approximately <strong>6.4 MB</strong>.</li>
+      <li>MAGIC2 consumes around <strong>58 MB</strong> — about 9× more than MAGIC1.</li>
+      <li>This difference arises from the TST’s node-based design, creating up to three child references per byte.</li>
+    </ul>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; border-collapse:collapse; margin-top:1rem;">
+      <tr><th>Implementation</th><th>Space Complexity</th></tr>
+      <tr><td>MAGIC1</td><td>O(maxSize)</td></tr>
+      <tr><td>MAGIC2</td><td>O(n) where n = number of unique bytes</td></tr>
+    </table>
+
+    <h2>Results and Insights</h2>
+    <p>
+      The <strong>Hash Table (MAGIC1)</strong> proved to be more space-efficient and faster on average, suitable for scenarios where collisions are minimal. The <strong>Ternary Search Trie (MAGIC2)</strong>, while slower and memory-intensive, provides structural benefits for pattern-based searches or hierarchical address matching.
+    </p>
+
+    <footer>
+      <p>INFO0027-1: GPU Batch Maker Project | University of Liège | 2025</p>
+    </footer>
+  </div>
+</body>
+</html>
