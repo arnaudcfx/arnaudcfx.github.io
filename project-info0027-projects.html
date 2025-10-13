@@ -2,69 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>info0027-projects – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>INFO0027 – Project 2: File Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .github-link:hover { background: #1e3799; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem; }
+    h1, h2, h3 { color: #2563eb; }
+    h1 { text-align: center; font-size: 2em; margin-bottom: 1rem; }
+    h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; margin-top: 2.2rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.4rem 0; }
+    .authors { text-align: center; margin-bottom: 2rem; font-weight: 600; color: #475569; }
+    .lang-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5em; margin: 1.5em 0; }
+    .lang-tag { background: #dbeafe; color: #1d4ed8; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; }
+    footer { text-align: center; margin-top: 3rem; color: #6b7280; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>info0027-projects</h1>
+    <h1>INFO0027 – Project 2: File Explorer</h1>
+    <div class="authors">AYMAN ADIL · ARNAUD CRUCIFIX · October 13, 2025</div>
+
     <div class="lang-list">
       <span class="lang-tag">Java</span>
-      <span class="lang-tag">C</span>
-      <span class="lang-tag">Python</span>
-      <span class="lang-tag">Makefile</span>
+      <span class="lang-tag">Design Patterns</span>
+      <span class="lang-tag">OOP</span>
+      <span class="lang-tag">Swing GUI</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>Software Architecture</h2>
     <p>
-      INFO0027 - Programming techniques projects: a collection of assignments covering key programming paradigms in Java, C, and Python, with an emphasis on algorithmic thinking and clean code practices.
+      The <strong>File Explorer project</strong> focuses on implementing an extensible, object-oriented architecture using multiple <strong>design patterns</strong> to handle various filesystem-like entities. Each entity—<em>root, folder, file, copy, alias, and archive</em>—inherits from a common abstract class <code>FileExporterItem</code>. This unified inheritance allows consistent management of user interactions and entity-specific behaviors through the <strong>Visitor pattern</strong>.
     </p>
-    <h2>Skills & Technologies</h2>
+    <p>
+      Core functionalities include recursive entity cloning, alias referencing, and file compression through the <code>Deflater</code> class, implemented via specialized visitor classes such as <code>CreateArchiveVisitor</code>, <code>CompressItemVisitor</code>, <code>CreateCopyVisitor</code>, and <code>DisplayVisitor</code>.
+    </p>
+
+    <h2>Design Patterns</h2>
+    <h3>Creational Pattern – Singleton</h3>
+    <p>
+      The <strong>Singleton pattern</strong> is applied to the <code>Root</code> class to ensure that only one root instance exists across all graphical interfaces. This guarantees global access and consistency within the File Explorer.
+    </p>
     <ul>
-      <li>Algorithm design in Java, C, and Python</li>
-      <li>Data structures (lists, trees, hashmaps)</li>
-      <li>Modular programming and Makefile automation</li>
-      <li>Testing, debugging, and performance analysis</li>
-      <li>Collaborative software development</li>
+      <li><strong>Advantages:</strong> Single root instance, accessible across the system.</li>
+      <li><strong>Drawbacks:</strong> May violate the Single Responsibility Principle.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h3>Structural Patterns</h3>
+    <h4>Composite Pattern</h4>
+    <p>
+      The <strong>Composite pattern</strong> models the hierarchical tree structure of the File Explorer, allowing unified treatment of entities (files or folders). Each subclass of <code>FileExporterItem</code> implements behavior tailored to its type.
+    </p>
     <ul>
-      <li>Each assignment implements a key algorithm or data structure from scratch (e.g., sorting, trees, graph traversals).</li>
-      <li>Emphasis on modular code, with reusable functions and classes.</li>
-      <li>Makefiles automate compilation and testing for C/Java projects.</li>
-      <li>Python scripts focus on readability and rapid prototyping.</li>
+      <li><strong>Advantages:</strong> Enables polymorphism, recursion, and extension without code breaking.</li>
+      <li><strong>Drawbacks:</strong> General base class may include unused or null-returning methods.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Example: Binary search tree insertion in C
-void insert_bst(node_t **root, int value) {
-    if (!*root) {
-        *root = malloc(sizeof(node_t));
-        (*root)->value = value;
-        (*root)->left = (*root)->right = NULL;
-    } else if (value &lt; (*root)->value) {
-        insert_bst(&(*root)->left, value);
-    } else {
-        insert_bst(&(*root)->right, value);
-    }
-}
-    </code></pre>
-    <h2>Results & Impact</h2>
+
+    <h4>Proxy Pattern</h4>
+    <p>
+      The <strong>Proxy pattern</strong> is employed for the <em>alias</em> entity, providing indirect control and reference to a real file. This facilitates multiple alias instances pointing to the same file while managing content retrieval.
+    </p>
     <ul>
-      <li>Gained fluency in multiple programming languages and paradigms.</li>
-      <li>Developed strong foundations in algorithms and modular design.</li>
-      <li>Improved ability to quickly switch between languages and toolchains.</li>
+      <li><strong>Advantages:</strong> Enables control over remote or shared files; supports multiple aliases.</li>
+      <li><strong>Drawbacks:</strong> Requires cleanup if the original file is deleted.</li>
     </ul>
-    <a class="github-link" href="https://github.com/adilayman/info0027-projects" target="_blank">View the project on GitHub</a>
+
+    <h4>Decorator Pattern</h4>
+    <p>
+      The <strong>Decorator pattern</strong> is used in the <em>copy operation</em> to wrap and recursively clone entities. It enhances object behavior dynamically without altering the original interface.
+    </p>
+    <ul>
+      <li><strong>Advantages:</strong> Supports deep cloning, respects SRP, allows feature extension.</li>
+      <li><strong>Drawbacks:</strong> Dependent on other entities’ <code>clone()</code> behavior.</li>
+    </ul>
+
+    <h3>Behavioral Pattern – Visitor</h3>
+    <p>
+      The <strong>Visitor pattern</strong> provides a mechanism for performing operations such as creating aliases, archives, copies, and displaying entities. Each visitor subclass defines custom behavior for each entity type (<em>File, Folder, Root</em>, etc.) via methods like <code>visitFile()</code> or <code>visitFolder()</code>.
+    </p>
+    <ul>
+      <li><strong>Advantages:</strong> Decouples operations from entities, avoids redundancy, respects Open/Closed Principle.</li>
+      <li><strong>Drawbacks:</strong> Generic implementation required to separate GUI and logic layers.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <p>
+      This project demonstrates a modular and extensible architecture for managing a virtual file system through robust design pattern usage. The combination of <strong>Composite</strong>, <strong>Visitor</strong>, <strong>Proxy</strong>, and <strong>Decorator</strong> patterns ensures flexibility and maintainability, supporting future GUI extensions and functional scalability.
+    </p>
+
+    <footer>
+      <p>INFO0027 – Programming Techniques | File Explorer Project | University of Liège | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
