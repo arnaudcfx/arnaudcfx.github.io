@@ -31,36 +31,15 @@
     <ul>
       <li>Parallel programming in C (OpenMP, MPI)</li>
       <li>Scientific computing, numerical analysis</li>
-      <li>Jupyter Notebook for data visualization and results</li>
-      <li>Shell scripting for automation and reproducibility</li>
-      <li>Profiling, benchmarking, and optimization</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
       <li>Numerical algorithms (e.g., matrix multiplication, FFT, PDE solvers) coded in C.</li>
       <li>Parallelized using OpenMP/MPI: distributes computation across CPU cores or nodes.</li>
-      <li>Jupyter Notebooks visualize results and compare speedups between serial/parallel code.</li>
-      <li>Shell scripts automate compilation, running, and result collection for benchmarks.</li>
       <li>Performance bottlenecks are analyzed and code is iteratively optimized.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Parallel matrix multiplication with OpenMP
-#pragma omp parallel for shared(A, B, C)
-for (int i = 0; i &lt; N; ++i)
-  for (int j = 0; j &lt; N; ++j) {
-    C[i][j] = 0;
-    for (int k = 0; k &lt; N; ++k)
-      C[i][j] += A[i][k] * B[k][j];
-  }
-    </code></pre>
-    <h2>Results & Impact</h2>
-    <ul>
-      <li>Achieved up to 8x speedup on multicore hardware versus serial code.</li>
-      <li>Produced detailed reports and visualizations of algorithm scaling.</li>
-      <li>Developed strong practical skills in parallel programming and scientific research.</li>
-    </ul>
     <div class="notice">
-      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+      The full source code is not published to respect the academic and group work confidentiality.
     </div>
   </div>
 </body>
