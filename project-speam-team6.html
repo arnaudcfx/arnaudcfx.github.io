@@ -2,61 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SPEAM 2023-2024 Team 6 – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VeGApp – Autonomous Vegetable Garden Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em; }
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .gitlab-link { display: block; background: #fc6d26; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .gitlab-link:hover { background: #b34b00; }
-    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3 { color: #166534; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center; margin: 1.5em 0; }
+    .lang-tag { background: #dcfce7; color: #166534; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .github-link { display: block; background: #166534; color: #fff; border-radius: 8px; padding: 0.9em 1.2em; text-align: center; margin-top: 2.5em; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+    .github-link:hover { background: #0f3d1e; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>SPEAM 2023-2024 Team 6</h1>
+    <h1>VeGApp – My Autonomous Vegetable Garden App</h1>
     <div class="lang-list">
-      <span class="lang-tag">Python</span>
-      <span class="lang-tag">Jupyter Notebook</span>
-      <!-- Add other languages/tools as needed -->
+      <span class="lang-tag">Flutter</span>
+      <span class="lang-tag">Java</span>
+      <span class="lang-tag">Spring Boot</span>
+      <span class="lang-tag">PostgreSQL</span>
+      <span class="lang-tag">OpenShift</span>
+      <span class="lang-tag">GitLab CI/CD</span>
+      <span class="lang-tag">Docker</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>Project Overview</h2>
     <p>
-      Academic group project for the SPEAM program at Université de Liège. The project focused on advanced engineering analysis and modeling. Collaborated in a multidisciplinary team to design, implement, and validate solutions to a complex real-world problem (details anonymized for confidentiality).
+      <strong>VeGApp</strong> (Vegetable Garden Application) transforms traditional gardening into a smart, connected experience. It allows users to manage and monitor their vegetable gardens via mobile and web applications. The system integrates IoT-inspired concepts with database synchronization and a continuous deployment pipeline, creating a seamless, automated ecosystem for gardeners.
     </p>
-    <h2>Skills & Technologies</h2>
+
+    <div class="photo-gallery">
+      <img src="images/vegapp_dashboard.png" alt="VeGApp Dashboard">
+      <img src="images/mobile_app_view.png" alt="Mobile App View">
+      <img src="images/network_topology.png" alt="Network Configuration Diagram">
+    </div>
+
+    <h2>Architecture Overview</h2>
     <ul>
-      <li>Python for data analysis, modeling, and automation</li>
-      <li>Jupyter Notebooks for collaborative code development and reporting</li>
-      <li>Scientific libraries (NumPy, SciPy, Matplotlib, etc.)</li>
-      <li>Version control with GitLab</li>
-      <li>Technical reporting and teamwork</li>
+      <li><strong>Frontend:</strong> Developed with Flutter following the MVC architecture, with models for data management, views for user interfaces, and controllers for input handling and synchronization.</li>
+      <li><strong>Backend:</strong> Java Spring Boot server using a REST API architecture, handling synchronization, authentication, and data persistence.</li>
+      <li><strong>Database:</strong> PostgreSQL database for structured data storage, accessible both locally and through OpenShift deployment.</li>
+      <li><strong>CI/CD:</strong> GitLab pipelines automate build, test, and deployment with Docker and OpenShift integration.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>Testing and Methodology</h2>
+    <p>
+      The project follows a hybrid <strong>Model-Driven + Agile/Scrum</strong> methodology. Model refinement and iteration through sprints ensured alignment with user needs. Testing was approached as a continuous process — from unit tests in Flutter and Java to integration and pipeline-level validation within GitLab.
+    </p>
     <ul>
-      <li>Data from sensors or simulation is preprocessed and cleaned in Python.</li>
-      <li>Mathematical models are implemented and tested in Jupyter Notebooks.</li>
-      <li>Results are visualized and analyzed to guide engineering decisions.</li>
-      <li>Team members contribute code, documentation, and analysis via GitLab.</li>
+      <li><strong>Frontend Testing:</strong> Automated tests run in the CI pipeline before APK builds.</li>
+      <li><strong>Backend Testing:</strong> API validation through Python scripts simulating network requests and offline scenarios.</li>
+      <li><strong>Synchronization Testing:</strong> Verified database and API resilience during connection loss and recovery.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code># Example: Data preprocessing in Python
-import numpy as np
-data = np.loadtxt("data.csv", delimiter=",")
-cleaned = data[~np.isnan(data).any(axis=1)]
-    </code></pre>
+
+    <h2>Key Technologies</h2>
+    <ul>
+      <li><strong>Flutter:</strong> For cross-platform mobile application development.</li>
+      <li><strong>Spring Boot:</strong> For the Java-based backend services.</li>
+      <li><strong>PostgreSQL:</strong> For persistent, relational data storage.</li>
+      <li><strong>GitLab CI/CD:</strong> For automated build and deployment workflows.</li>
+      <li><strong>Docker & OpenShift:</strong> For containerization and deployment management.</li>
+    </ul>
+
+    <h2>Code Architecture</h2>
+    <h3>Frontend</h3>
+    <p>
+      The Flutter frontend adopts the MVC pattern. <strong>Models</strong> represent entities like gardens, plants, and plots. <strong>Views</strong> correspond to application screens, and <strong>Controllers</strong> handle logic, synchronization, and user interaction. This modular design supports maintainability and scalability.
+    </p>
+    <h3>Backend</h3>
+    <p>
+      The Spring Boot backend manages user authentication, synchronization logic, and communication with the PostgreSQL database. Hibernate provides ORM mapping between Java entities and SQL tables. The server employs token-based authentication and secure HTTPS communication with a self-signed certificate.
+    </p>
+    <h3>Website</h3>
+    <p>
+      The website complements the mobile app with a responsive web interface for managing gardens, permissions, and user accounts. It includes multiple HTML pages styled with CSS for distinct features such as login, signup, and garden management.
+    </p>
+
     <h2>Results & Impact</h2>
     <ul>
-      <li>Delivered a working prototype and comprehensive technical report to faculty.</li>
-      <li>Demonstrated effective interdisciplinary teamwork and project management.</li>
-      <li>Enhanced skills in scientific programming, data analysis, and reporting.</li>
+      <li>Successfully implemented a synchronized ecosystem of mobile, web, and backend services.</li>
+      <li>Developed and deployed using full DevOps cycle with GitLab CI/CD and OpenShift.</li>
+      <li>Demonstrated advanced understanding of MVC, REST API design, and secure communication.</li>
+      <li>Showcased effective Agile collaboration among six multidisciplinary team members.</li>
     </ul>
-    <a class="gitlab-link" href="https://gitlab.uliege.be/SPEAM/2023-2024/team-6" target="_blank">View the project on GitLab</a>
+
+    <a class="github-link" href="https://gitlab.com/team6/vegapp" target="_blank">View the Project on GitLab</a>
+
+    <footer>
+      <p>Team 6 – VeGApp | Software Project Engineering & Management | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
