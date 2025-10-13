@@ -20,42 +20,55 @@
     <h1>Projet2-OS</h1>
     <div class="lang-list">
       <span class="lang-tag">C</span>
+      <span class="lang-tag">Linux Kernel</span>
+      <span class="lang-tag">Memory Management</span>
     </div>
     <h2>Project Description</h2>
     <p>
-      The second collaborative project in Operating Systems, extending our OS kernel to include advanced process and memory management features.
+      Project 2 focuses on hacking the Linux kernel to add custom system calls for memory page analysis. The project required a deep dive into kernel data structures and process memory management, with the goal of exposing memory usage information via new syscalls.
     </p>
+    <ul>
+      <li>
+        <b>getnbpages():</b> Given a process name, this syscall fetches all processes with that name (using <code>addName()</code>). For each process, it collects their memory management structures (<code>mm</code>) via <code>addMm()</code>. For each memory mapping (<code>vm_area_struct</code>), it calculates the number of pages in each region by subtracting start and end addresses and dividing by the page size (4KB). Page table entries (<code>pte</code>s) are retrieved and indexed using <code>addPte()</code>. The total page count is accumulated with <code>addPages()</code>.
+      </li>
+      <li>
+        <b>getreadpages():</b> Fetches a bitmap from user space and sets each bit according to the <code>pte</code> indices previously gathered. The updated bitmap is then copied back to user space using <code>copy_to_user()</code>. All intermediate kernel structures (mms, ptes, Processes) are cleaned up after execution.
+      </li>
+    </ul>
+    <h2>Kernel Memory Management Overview</h2>
+    <ul>
+      <li>
+        Each process is represented by a <code>task_struct</code>, which holds metadata like PID, name, and flags. The <code>mm_struct</code> field manages process memory.
+      </li>
+      <li>
+        <code>mm_struct</code> tracks all virtual memory areas (VMAs) and the page table root (<code>pgd</code>).</li>
+      <li>
+        Each VMA defines a contiguous region of virtual addresses (heap, stack, etc.), with start/end addresses and access flags.</li>
+      <li>
+        VMAs are split into fixed-size pages, each mapped to a physical RAM frame by the MMU. Virtual pages are indexed via page tables: <code>pgd → pud → pmd → pte</code>.</li>
+      <li>
+        The page number indexes into the page table hierarchy to locate the physical address. Each upper-level table points to a block of lower-level tables, with <code>pgd</code> as the top level.</li>
+    </ul>
     <h2>Skills & Technologies</h2>
     <ul>
-      <li>C programming (systems-level, memory management)</li>
-      <li>Process management and scheduling policies</li>
-      <li>Memory paging and virtual address space</li>
-      <li>Debugging concurrent systems</li>
-      <li>Version control with Git</li>
+      <li>C programming (kernel-level)</li>
+      <li>Linux kernel data structures (<code>task_struct</code>, <code>mm_struct</code>, VMAs, page tables)</li>
+      <li>Custom syscall implementation and user/kernel space data transfer</li>
+      <li>Memory management, paging, and virtual memory debugging</li>
+      <li>Using <code>copy_to_user()</code> and kernel allocation/cleanup routines</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
-      <li>Implemented process table and new scheduling strategies (priority, round robin).</li>
-      <li>Added support for virtual memory and page tables.</li>
-      <li>Designed interrupt handlers for timer and memory faults.</li>
-      <li>Integrated extensive logging and debugging macros.</li>
-      <li>Tested edge cases such as process starvation and memory leaks.</li>
+      <li>Locate target processes by name and gather their memory regions</li>
+      <li>Count pages per VMA and collect <code>pte</code> indices</li>
+      <li>Expose per-page info to user space via bitmaps and syscalls</li>
+      <li>Clean up all kernel data structures after syscall completes</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Page fault handler (simplified)
-void handle_page_fault(proc_t *p, uint32_t addr) {
-    if (not_mapped(addr)) {
-        map_page(p, addr);
-    } else {
-        kill_process(p);
-    }
-}
-    </code></pre>
     <h2>Results & Impact</h2>
     <ul>
-      <li>Successfully implemented virtual memory and preemptive multitasking.</li>
-      <li>Improved team collaboration on complex concurrent codebases.</li>
-      <li>Deepened understanding of low-level OS design and memory models.</li>
+      <li>Successfully added syscalls for memory page analysis in the Linux kernel</li>
+      <li>Demonstrated practical kernel hacking and memory introspection</li>
+      <li>Deepened understanding of OS memory models and page table structures</li>
     </ul>
     <div class="notice">
       The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
