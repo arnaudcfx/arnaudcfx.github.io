@@ -16,6 +16,7 @@
     .lang-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5em; margin: 1.5em 0; }
     .lang-tag { background: #ccfbf1; color: #0f766e; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; }
     footer { text-align: center; margin-top: 3rem; color: #6b7280; font-size: 0.9em; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
   </style>
 </head>
 <body>
@@ -40,12 +41,7 @@
       <li><strong>actions.php</strong> – Executes user-selected queries and passes the data to the associated view.</li>
     </ul>
 
-    <h2>2. Database Initialization</h2>
-    <p>
-      If the database is empty, it can be initialized through <code>?page=migrate</code>. The system connects to the <strong>group16</strong> database using the <strong>PDO API</strong> with attributes <code>ATTR_ERRMODE</code> and <code>ERRMODE_EXCEPTION</code> for error handling. Tables are created according to project specifications and populated using the <strong>LOAD DATA LOCAL INFILE</strong> command, which imports data line-by-line while ignoring the first header row.
-    </p>
-
-    <h2>3. SQL Queries</h2>
+    <h2>2. SQL Queries</h2>
     <p>
       Each SQL query is implemented generically to promote modularity. Named placeholders (<code>:var_name</code>) are used with PDO’s <code>prepare()</code>, <code>bindValue()</code>, and <code>execute()</code> methods for safe, parameterized execution.
     </p>
@@ -99,6 +95,10 @@ ORDER BY nom_serie, n_saison DESC, n_episode DESC;</code></pre>
     <p>
       This project demonstrates the development of a dynamic, database-driven PHP website using a modular architecture and secure, parameterized SQL queries. It highlights the use of <strong>PDO</strong> for connection handling, <strong>modular query scripts</strong>, and <strong>automatic database initialization</strong> via CSV imports.
     </p>
+
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
 
     <footer>
       <p>INFO0009 – Databases Project | University of Liège | 2025</p>
