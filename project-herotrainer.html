@@ -2,64 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HeroTrainer – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HeroTrainer – Object-Oriented Mobile RPG Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .github-link:hover { background: #1e3799; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3, h4 { color: #1e40af; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    h3 { color: #334155; margin-top: 1.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .note { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>HeroTrainer</h1>
-    <div class="lang-list">
-      <span class="lang-tag">Makefile</span>
-      <span class="lang-tag">Java</span>
-      <span class="lang-tag">Dart</span>
-      <span class="lang-tag">HTML</span>
-    </div>
-    <h2>Project Description</h2>
+    <h1>HeroTrainer – Object-Oriented Mobile RPG Game</h1>
+
+    <h2>Project Summary</h2>
     <p>
-      HeroTrainer is a cross-platform training application combining Java, Dart, and HTML for both backend and frontend logic. It is designed as an educational tool or game where users can train virtual heroes, complete tasks, and track progress.
+      <strong>HeroTrainer</strong> is a role-playing game (RPG) developed as part of the <strong>Object-Oriented Programming on Mobile Devices</strong> course. It is a mobile and desktop-friendly game where users can train, equip, and battle with heroes of different classes. Each hero evolves over time through combat, item crafting, and trading with merchants. The project was built to demonstrate strong <strong>object-oriented design principles</strong> and a modular architecture for scalable game development.
     </p>
-    <h2>Skills & Technologies</h2>
+
+    <h2>Application Overview</h2>
     <ul>
-      <li>Java for core logic and backend services</li>
-      <li>Dart for Flutter-based UI and mobile/web integration</li>
-      <li>HTML for frontend content display</li>
-      <li>Makefile for build automation</li>
-      <li>OOP, event-driven programming, and cross-language integration</li>
+      <li><strong>Loading Screen:</strong> Entry point where the player starts the game.</li>
+      <li><strong>Select Screen:</strong> Players choose among nine hero classes, each with unique abilities.</li>
+      <li><strong>Home Screen:</strong> Central hub for saving progress and navigating between screens.</li>
+      <li><strong>Craft Screen:</strong> Allows merging of compatible items to create stronger ones.</li>
+      <li><strong>Merchant Screen:</strong> Shop where players can buy or sell items from their inventory.</li>
+      <li><strong>Hero Screen:</strong> Displays hero stats, equipment, and inventory.</li>
+      <li><strong>Combat Screen:</strong> Turn-based battle interface where players fight monsters using attacks, potions, or spells.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <div class="photo-gallery">
+      <!-- Add project screenshots here -->
+      <img src="images/loading_screen.png" alt="Loading Screen">
+      <img src="images/select_screen.png" alt="Select Hero Screen">
+      <img src="images/combat_screen.png" alt="Combat Screen">
+      <img src="images/merchant_screen.png" alt="Merchant Screen">
+    </div>
+
+    <h2>Technical Design</h2>
+    <p>
+      The game’s architecture is divided into four main layers, ensuring clean separation of responsibilities and easy maintainability:
+    </p>
     <ul>
-      <li>The backend in Java handles user data, hero stats, and game logic.</li>
-      <li>Dart/Flutter provides a responsive, interactive UI for users to interact with their heroes and view stats in real time.</li>
-      <li>HTML is used to render help pages or static content within the app.</li>
-      <li>Makefile scripts automate building, testing, and deployment.</li>
+      <li><strong>Data Entities:</strong> Contain data structures and object models such as heroes, monsters, items, and spells.</li>
+      <li><strong>Business Logic:</strong> Implements gameplay mechanics and communicates with UI through the Provider pattern.</li>
+      <li><strong>User Interface:</strong> Developed using Flutter/Dart for a responsive, animated mobile interface.</li>
+      <li><strong>Services:</strong> Manage saving, loading, and other device-related operations.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Example: Hero class in Java
-public class Hero {
-    private String name;
-    private int level;
-    public void train() { level++; }
-    public int getLevel() { return level; }
-}
-    </code></pre>
-    <h2>Results & Impact</h2>
+
+    <h2>Object-Oriented Structure</h2>
+    <p>
+      The entire codebase follows <strong>object-oriented principles</strong>. The core class <code>Character</code> serves as an abstract base, defining shared attributes and methods for both heroes and enemies. Derived classes extend functionality through polymorphism, implementing unique combat behaviors, spells, and level-up logic. This architecture enables scalability and simplifies debugging and maintenance.
+    </p>
+
+    <h2>Combat & Items System</h2>
+    <p>
+      The turn-based combat system uses event-driven states to handle player and enemy actions. Each character can perform attacks, cast spells, or use items within time constraints. Effects like poison, armor boosts, and burn damage can persist over multiple turns, creating complex strategies. Items such as weapons, armor, and potions are procedurally generated based on hero level and rarity, allowing dynamic gameplay and replayability.
+    </p>
+
+    <h2>Limitations & Future Improvements</h2>
     <ul>
-      <li>Successfully integrated Java backend with Flutter UI for a smooth user experience.</li>
-      <li>Developed reusable modules for hero management and event handling.</li>
-      <li>Learned best practices in multi-language project structure and automated builds.</li>
+      <li>Multiplayer mode was planned but not implemented.</li>
+      <li>Automatic game saving and expanded crafting options (alchemy, forging) could enhance experience.</li>
+      <li>Future updates could include unique hero equipment, improved balancing, and additional sound effects.</li>
     </ul>
-    <a class="github-link" href="https://github.com/arnaudcfx/HeroTrainer" target="_blank">View the project on GitHub</a>
+
+    <h2>Technologies & Tools Used</h2>
+    <ul>
+      <li><strong>Dart & Flutter</strong> – Cross-platform mobile app framework for UI.</li>
+      <li><strong>Java</strong> – Backend logic and data model implementation.</li>
+      <li><strong>Makefile</strong> – For build automation and dependency management.</li>
+      <li><strong>OOP Patterns</strong> – Abstract classes, inheritance, and polymorphism for game logic.</li>
+      <li><strong>Git / GitHub</strong> – Version control and collaborative development.</li>
+    </ul>
+
+    <h2>Key Takeaways</h2>
+    <p>
+      <strong>HeroTrainer</strong> successfully demonstrates the use of <strong>object-oriented programming</strong> and <strong>mobile game architecture</strong>. The project reinforced skills in software design, event-driven systems, and collaborative coding while producing a fully playable, animated RPG experience.
+    </p>
+
+    <div class="note">
+      <p>
+        In summary, this project showcases the ability to design modular, object-oriented mobile applications integrating backend logic, UI, and gameplay elements within a cohesive system.
+      </p>
+    </div>
+
+    <footer>
+      <p>Project Report — HeroTrainer RPG | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
