@@ -2,73 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Legal-Taxonomy-Explorer – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Automating Law Firm Fund Review – Master Thesis Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: bold; }
-    .github-link:hover { background: #1e3799; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3 { color: #ea580c; }
+    h1 { text-align: center; margin-bottom: 2rem; font-size: 2em; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center; margin: 1.5em 0; }
+    .lang-tag { background: #ffedd5; color: #c2410c; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .github-link { display: block; background: #ea580c; color: #fff; border-radius: 8px; padding: 0.9em 1.2em; text-align: center; margin-top: 2.5em; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+    .github-link:hover { background: #9a3412; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Legal-Taxonomy-Explorer</h1>
+    <h1>Automating Law Firms’ “Fund Review” Processes using AI Document Intelligence and Generative AI</h1>
     <div class="lang-list">
-      <span class="lang-tag">Python</span>
-      <span class="lang-tag">HTML</span>
-      <span class="lang-tag">Dockerfile</span>
+      <span class="lang-tag">React</span>
+      <span class="lang-tag">.NET Core</span>
+      <span class="lang-tag">SQL Server</span>
+      <span class="lang-tag">Azure</span>
+      <span class="lang-tag">AI Document Intelligence</span>
+      <span class="lang-tag">Generative AI</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>Thesis Summary</h2>
     <p>
-      <b>Automating the "Fund Review" Process in Law Firms with AI and Hybrid Knowledge Graphs</b><br>
-      This project is based on the thesis: <i>"Automate Law Firms 'Fund Review' processes using AI Document Intelligence and Generative AI"</i>. <br><br>
-      The "Fund Review" process for asset management companies requires legal experts to analyze investment funds across regulatory, legal, financial, and operational dimensions. Traditionally, this is a highly manual, repetitive, and error-prone task. This project introduces an AI-powered solution that automates the analysis and classification of legal documents—such as fund prospectuses, constitutions, and agreements—by combining Document Intelligence, regex-based parsing, decision trees, and Generative AI.
+      This master thesis explores the automation of the <strong>Fund Review</strong> process conducted by law firms for asset management companies. The goal is to replace repetitive, manual document evaluations with an intelligent automation framework combining <strong>AI Document Intelligence</strong>, <strong>Regex-driven extraction</strong>, <strong>Decision Trees</strong>, and <strong>Generative AI</strong>. The solution is built using <strong>React</strong>, <strong>.NET Core</strong>, <strong>SQL Server</strong>, and <strong>Microsoft Azure</strong>.
     </p>
+
+    <div class="photo-gallery">
+      <img src="images/knowledge_graph.png" alt="Knowledge Graph Representation">
+      <img src="images/architecture_diagram.png" alt="System Architecture Diagram">
+      <img src="images/ai_pipeline.png" alt="AI Processing Pipeline">
+    </div>
+
+    <h2>Abstract</h2>
     <p>
-      Unlike traditional supervised models—which struggle due to the lack of labeled legal data—this solution builds a hybrid architecture: a symbolic knowledge graph extracted from legal texts, paired with a Generative AI model used as a language interface (not as a source of truth). Legal reasoning and document structure are externalized and grounded in this knowledge graph, enabling legally valid and interpretable outputs.
+      The thesis addresses the challenges of automating legal document processing, where the lack of labeled data and the domain specificity of legal language limit traditional AI models. To overcome these limitations, a <strong>hybrid AI architecture</strong> is introduced — combining a <strong>Knowledge Graph (KG)</strong> as a structured legal reasoning framework and a <strong>Large Language Model (LLM)</strong> as a natural language interface. Instead of relying on unverified LLM outputs, the KG externalizes all legal reasoning, ensuring verifiable, context-aware document interpretation.
     </p>
+
+    <h2>Research Contributions</h2>
     <ul>
-      <li>Custom structural parsing (with regex and semantic analysis) segments legal documents into hierarchical, semantically-coherent chunks.</li>
-      <li>Entity and relationship extraction (using LLMs and ontology alignment) builds a knowledge graph capturing the legal content and cross-document references.</li>
-      <li>Community detection algorithms (e.g., Louvain method) induce a legal taxonomy—clusters of related clauses and concepts—directly from the graph without relying on predefined categories.</li>
-      <li>Generative AI provides natural language labels and enables context-aware search and summarization, always grounded in the underlying graph.</li>
+      <li><strong>Knowledge Graph Construction:</strong> Legal documents are parsed into hierarchical chunks and transformed into semantic graph nodes, preserving cross-references and relationships.</li>
+      <li><strong>Automated Taxonomy Discovery:</strong> A legal taxonomy emerges via <em>graph-based community detection</em> (Louvain algorithm), forming clusters of interconnected legal concepts.</li>
+      <li><strong>Graph-RAG Framework:</strong> Integrates knowledge graph retrieval with LLM generation, grounding language outputs in verifiable, domain-specific structures.</li>
+      <li><strong>Hybrid Architecture:</strong> Bridges symbolic and generative AI to provide explainable, contextually accurate fund review insights.</li>
     </ul>
-    <p>
-      The result: a fully automated pipeline that transforms unstructured legal corpora into a navigable taxonomy, supporting attorneys in drafting fund review reports with improved efficiency, compliance, and reduced error. The framework is implemented in Python, with plans for React/.NET Core/Azure integration.
-    </p>
-    <h2>Skills & Technologies</h2>
+
+    <h2>Methodology & Design</h2>
     <ul>
-      <li>Knowledge graph construction and ontology alignment</li>
-      <li>Regex-based and semantic parsing of legal documents</li>
-      <li>Community detection and unsupervised taxonomy extraction</li>
-      <li>Generative AI for language labeling and retrieval (Graph-RAG)</li>
-      <li>Python, Docker, and cloud deployment (Azure)</li>
-      <li>Legal tech domain expertise (fund prospectuses, compliance, legal classification)</li>
+      <li>Custom <strong>document splitters</strong> parse constitutions, prospectuses, and agreements into semantically coherent sections using regex and embeddings.</li>
+      <li>Legal concepts are interlinked through <strong>semantic embeddings</strong> to capture both explicit and implicit references.</li>
+      <li>A <strong>Knowledge Graph</strong> represents entities and relations extracted from documents via LLM-assisted entity recognition and ontology alignment.</li>
+      <li>A <strong>community detection algorithm</strong> produces an emergent taxonomy of legal categories for fund review automation.</li>
+      <li>The <strong>GraphRAG system</strong> retrieves grounded legal text for drafting accurate, domain-aware fund review reports.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>Technologies & Tools</h2>
     <ul>
-      <li>Parse and segment documents into legal chunks using document-specific rules.</li>
-      <li>Extract entities and relationships with LLM-assisted functions; build a knowledge graph.</li>
-      <li>Run community detection to find clusters representing legal categories.</li>
-      <li>Label clusters with LLM and expose as a hierarchical taxonomy for attorneys.</li>
-      <li>Enable retrieval and drafting of legal text via Graph-augmented RAG.</li>
+      <li>Frontend: <strong>React</strong> for web-based interfaces.</li>
+      <li>Backend: <strong>.NET Core</strong> for API and orchestration services.</li>
+      <li>Database: <strong>SQL Server</strong> for structured fund and legal data storage.</li>
+      <li>Cloud Infrastructure: <strong>Microsoft Azure</strong> for hosting, AI services, and Document Intelligence APIs.</li>
+      <li>AI Components: <strong>Azure Document Intelligence</strong>, <strong>OpenAI GPT-5</strong>, <strong>Knowledge Graph frameworks</strong>.</li>
     </ul>
-    <h2>Results & Impact</h2>
+
+    <h2>Expected Impact</h2>
     <ul>
-      <li>Automated creation of legal knowledge graphs and taxonomies from raw legal corpora.</li>
-      <li>Enabled rapid, accurate fund review drafting with less manual effort and improved compliance.</li>
-      <li>Demonstrated hybrid AI + symbolic reasoning for trustworthy, interpretable legal NLP.</li>
+      <li>Increased operational efficiency and reduced manual effort in fund review workflows.</li>
+      <li>Improved compliance accuracy and legal interpretability through hybrid AI reasoning.</li>
+      <li>Creation of a scalable and explainable architecture for legal document automation.</li>
+      <li>Potential extension toward fully autonomous legal and financial review systems.</li>
     </ul>
-    <p>
-      Pour consulter la thèse complète : <a href="http://hdl.handle.net/2268.2/24860" target="_blank">http://hdl.handle.net/2268.2/24860</a> <span style="color:#888">(accès restreint)</span>
-    </p>
-    <a class="github-link" href="https://github.com/arnaudcfx/Legal-Taxonomy-Explorer" target="_blank">View the project on GitHub</a>
+
+    <a class="github-link" href="http://hdl.handle.net/2268.2/24860" target="_blank">Consult the Master Thesis (Accès restreint)</a>
+
+    <footer>
+      <p>Master Thesis – Automating Legal Fund Review Processes | University of Liège | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
+
