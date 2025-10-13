@@ -2,67 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Projet Deep Learning – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Handwritten Image Recognition – Deep Learning Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3, h4 { color: #1e40af; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    h3 { color: #334155; margin-top: 1.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .note { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Projet Deep Learning</h1>
-    <div class="lang-list">
-      <span class="lang-tag">Jupyter Notebook</span>
-    </div>
-    <h2>Project Description</h2>
+    <h1>Handwritten Image Recognition – Deep Learning Project</h1>
+
+    <h2>Project Summary</h2>
     <p>
-      Group project for a university Deep Learning course, developing and evaluating convolutional neural networks (CNNs) for image classification tasks.
+      This project, titled <strong>Handwritten Image Recognition</strong>, was developed as part of the <strong>INFO8010: Deep Learning course</strong> at the University of Liège. The goal was to design and implement a model capable of recognizing handwritten text from scanned documents, bridging the gap between handwritten notes and digital text formats.
     </p>
-    <h2>Skills & Technologies</h2>
+    <p>
+      The system combines <strong>Convolutional Neural Networks (CNNs)</strong> for feature extraction and <strong>Bidirectional Long Short-Term Memory (BiLSTM)</strong> networks for sequence modeling. The <strong>Connectionist Temporal Classification (CTC)</strong> loss function was used for sequence decoding, allowing the model to map input images directly to transcribed text without pre-segmented labels.
+    </p>
+
+    <h2>Approach & Methods</h2>
     <ul>
-      <li>Python, PyTorch, and Jupyter Notebook</li>
-      <li>Model design: CNN architectures, layers, activation functions</li>
-      <li>Data preprocessing and augmentation</li>
-      <li>Hyperparameter tuning and model evaluation</li>
-      <li>Team collaboration and reproducible research</li>
+      <li><strong>Dataset:</strong> The IAM Handwriting Database, preprocessed through scaling, grayscale conversion, binarization, and line-level segmentation.</li>
+      <li><strong>Preprocessing:</strong> Image resizing, adaptive thresholding, paragraph and line segmentation, and data augmentation (rotation, affine transforms, Gaussian blur, normalization).</li>
+      <li><strong>Model Architecture:</strong> CNN layers for spatial feature extraction followed by BiLSTM layers to capture sequential dependencies in handwritten lines.</li>
+      <li><strong>Loss Function:</strong> CTC decoding layer translating predicted frame-level sequences into readable text.</li>
+      <li><strong>Training:</strong> Implemented in PyTorch using the Adam optimizer with learning rate 0.001, trained on subsets of up to 2000 line images.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>Results & Insights</h2>
     <ul>
-      <li>Preprocesses image datasets and applies augmentation for training/validation splits.</li>
-      <li>Defines CNN architectures using PyTorch modules (Conv2d, ReLU, MaxPool, etc.).</li>
-      <li>Trains models using backpropagation, tracks loss/accuracy, and prevents overfitting (dropout, early stopping).</li>
-      <li>Jupyter Notebooks integrate code, results, and visualizations for easy review.</li>
+      <li>Initial results showed the model learning character patterns effectively, though longer training and larger datasets are needed for optimal accuracy.</li>
+      <li>Observed overfitting at later epochs due to limited dataset size.</li>
+      <li>Model predictions became progressively readable, validating the CNN-BiLSTM-CTC pipeline for handwriting recognition.</li>
+      <li>Training deep learning models for handwriting recognition is computationally intensive and benefits from more data and longer training time.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code># Example: Simple CNN in PyTorch
-import torch.nn as nn
-class SimpleCNN(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.conv = nn.Conv2d(3, 32, 3, padding=1)
-        self.pool = nn.MaxPool2d(2, 2)
-        self.fc = nn.Linear(32*16*16, 10)
-    def forward(self, x):
-        x = self.pool(nn.functional.relu(self.conv(x)))
-        x = x.view(x.size(0), -1)
-        return self.fc(x)
-    </code></pre>
-    <h2>Results & Impact</h2>
+
+    <h2>Technologies & Tools Used</h2>
     <ul>
-      <li>Achieved >90% accuracy on test image dataset.</li>
-      <li>Produced clear performance visualizations and documented model choices.</li>
-      <li>Gained practical experience in deep learning, teamwork, and scientific reporting.</li>
+      <li><strong>Python</strong> – Core programming language for model development.</li>
+      <li><strong>PyTorch</strong> – Deep learning framework for CNN and BiLSTM implementation.</li>
+      <li><strong>NumPy / OpenCV / PIL</strong> – For preprocessing and data handling.</li>
+      <li><strong>Matplotlib</strong> – Visualization of losses, accuracy curves, and predictions.</li>
+      <li><strong>Jupyter Notebook</strong> – For experiment tracking and presentation.</li>
     </ul>
-    <div class="notice">
-      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+
+    <h2>Key Takeaways</h2>
+    <p>
+      This project provided hands-on experience with <strong>deep neural architectures</strong> and sequence-to-sequence modeling. It strengthened understanding of <strong>data preprocessing pipelines</strong>, <strong>training dynamics</strong>, and <strong>model evaluation</strong> in practical machine learning tasks.
+    </p>
+
+    <div class="note">
+      <p>
+        In summary, the Handwritten Image Recognition project demonstrates the ability to design and train a full deep learning pipeline — from raw image preprocessing to sequence decoding — and apply modern AI techniques to real-world problems.
+      </p>
     </div>
+
+    <footer>
+      <p>Project Report — Handwritten Image Recognition | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
+
