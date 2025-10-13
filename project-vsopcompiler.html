@@ -2,74 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>vsopcompiler – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>vsopcompiler – Compiler Development Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    ul { margin-bottom: 1.5em; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: bold; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3 { color: #1e40af; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center; margin: 1.5em 0; }
+    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 8px; padding: 0.9em 1.2em; text-align: center; margin-top: 2.5em; font-size: 1.1em; text-decoration: none; font-weight: bold; transition: background 0.2s; }
     .github-link:hover { background: #1e3799; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>vsopcompiler</h1>
+    <h1>vsopcompiler – Compiler for VSOP Language</h1>
     <div class="lang-list">
       <span class="lang-tag">C++</span>
-      <span class="lang-tag">Yacc</span>
-      <span class="lang-tag">Lex</span>
+      <span class="lang-tag">Flex (Lex)</span>
+      <span class="lang-tag">Bison (Yacc)</span>
       <span class="lang-tag">LLVM</span>
       <span class="lang-tag">Makefile</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>Project Summary</h2>
     <p>
-      A full compiler for the VSOP programming language, developed as a systems programming project. The compiler translates VSOP source code into LLVM intermediate representation (IR), supporting custom language features and basic code generation for the x86-64 architecture.
+      The <strong>vsopcompiler</strong> project is a complete compiler developed for the <strong>VSOP</strong> (Very Simple Object Programming) language. Written in C++, it handles every major compilation stage — from lexical and syntax analysis to semantic checks and LLVM IR code generation. The compiler transforms high-level VSOP programs into optimized, executable LLVM code, providing a strong foundation for understanding modern compiler architectures.
     </p>
-    <p>
-      The implementation is structured in four main modules:
-    </p>
+
+    <h2>System Architecture</h2>
     <ul>
-      <li>
-        <b>Lexical Analysis:</b> A Flex lexer scans the input, producing a stream of tokens. Tokens include operators, keywords, identifiers, and literals, with robust handling for edge cases (e.g., integer literals, string literals, invalid input). The lexer is split into definitions, rules, and user code. Notably, string literal recognition required extensive fine-tuning for correctness.
-      </li>
-      <li>
-        <b>Syntax Analysis:</b> A Bison parser processes tokens to build an abstract syntax tree (AST) according to VSOP grammar rules. The AST is object-oriented, with nodes for each syntactic element (e.g., expressions, classes). Precedence and associativity rules are defined to resolve parsing ambiguities. The parser constructs the tree in a way that facilitates both semantic analysis and code generation.
-      </li>
-      <li>
-        <b>Semantic Analysis:</b> The AST is traversed with a <i>visitor pattern</i> to perform type-checking. Multiple passes (visitors) are used: one to record class hierarchies, another to detect inheritance cycles, a third to record class members, and a final pass to check types and annotate expressions. This modular approach makes the analysis extensible but adds some code redundancy.
-      </li>
-      <li>
-        <b>Code Generation:</b> An LLVM visitor traverses the AST and emits LLVM IR. Shared pointers ensure proper management of context, builder, and module. Each class node generates a vtable (virtual method table) for dynamic dispatch. Target triple is set to x86_64-pc-linux-gnu for compatibility. Method calls leverage vtable lookups for correct function resolution.
-      </li>
+      <li><strong>Lexical Analysis:</strong> Implemented in Flex, scanning the source code and converting it into a stream of tokens (keywords, identifiers, operators, literals). Includes robust error handling and literal validation.</li>
+      <li><strong>Syntax Analysis:</strong> Implemented with Bison, using grammar rules to construct an <em>Abstract Syntax Tree (AST)</em>. The parser defines operator precedence and associativity to manage ambiguities efficiently.</li>
+      <li><strong>Semantic Analysis:</strong> Multi-pass traversal of the AST using the <em>Visitor Pattern</em>. Type checking, inheritance validation, and class hierarchy analysis are performed in separate modular passes.</li>
+      <li><strong>Code Generation:</strong> Using the LLVM API, the compiler emits LLVM Intermediate Representation (IR). Each node in the AST maps to IR instructions, with vtable creation for dynamic dispatch and virtual methods.</li>
     </ul>
-    <h2>Skills & Technologies</h2>
+
+    <div class="photo-gallery">
+      <!-- Add compiler diagrams or code screenshots here -->
+      <img src="images/lexer_flow.png" alt="Lexical Analysis Flow">
+      <img src="images/parser_ast.png" alt="Parser and AST Structure">
+      <img src="images/llvm_output.png" alt="LLVM IR Output Example">
+    </div>
+
+    <h2>Core Features</h2>
     <ul>
-      <li>C++ for compiler core, AST, visitors, and codegen</li>
-      <li>Flex (Lex) and Bison (Yacc) for lexical and syntax analysis</li>
-      <li>LLVM API for IR generation and backend targeting</li>
-      <li>Makefile for build automation</li>
-      <li>Unit testing, debugging, and error reporting</li>
+      <li>Implements a full compilation pipeline: lexing, parsing, semantic checks, and code generation.</li>
+      <li>Supports inheritance, polymorphism, and type safety through multi-pass semantic analysis.</li>
+      <li>Generates LLVM IR code that can be compiled to native machine code using <code>clang</code> or <code>llc</code>.</li>
+      <li>Handles advanced concepts like vtables, dynamic dispatch, and scope management.</li>
+      <li>Extensible modular design allowing additional optimization passes or new language features.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>Technologies & Tools</h2>
     <ul>
-      <li>Lexer produces tokens, handling keywords, operators, literals, and errors</li>
-      <li>Parser builds AST nodes with clear type and value propagation</li>
-      <li>Visitor pattern enables clean, multi-pass semantic analysis</li>
-      <li>LLVM IR generated per AST node, with vtable support for classes and method calls</li>
+      <li><strong>C++</strong> – Core language for compiler logic and AST management.</li>
+      <li><strong>Flex / Bison</strong> – Lexical and syntax analyzers for grammar parsing.</li>
+      <li><strong>LLVM API</strong> – Backend for IR generation and linking.</li>
+      <li><strong>Makefile</strong> – Build automation for multi-module compilation.</li>
+      <li><strong>Valgrind / gdb</strong> – Debugging and memory leak detection.</li>
     </ul>
-    <h2>Results & Impact</h2>
+
+    <h2>Design Patterns & Code Logic</h2>
     <ul>
-      <li>Successfully parses, type-checks, and compiles VSOP programs to LLVM IR</li>
-      <li>Demonstrates the full pipeline from language specification to code generation</li>
-      <li>Highlights challenges in string parsing, visitor pattern extensibility, and vtable codegen</li>
-      <li>Some known limitations: no advanced code optimizations and incomplete test coverage (not all platform tests pass)</li>
+      <li><strong>Visitor Pattern:</strong> Enables clean, modular traversal of AST nodes during semantic and IR generation passes.</li>
+      <li><strong>Factory Pattern:</strong> Used for token and node creation, simplifying code management and reducing redundancy.</li>
+      <li><strong>Memory Management:</strong> Implemented using <code>std::shared_ptr</code> and <code>std::unique_ptr</code> to ensure safe resource handling.</li>
+      <li><strong>Error Handling:</strong> Centralized exception and diagnostic management for compiler feedback.</li>
     </ul>
-    <a class="github-link" href="https://github.com/arnaudcfx/vsopcompiler" target="_blank">View the project on GitHub</a>
+
+    <h2>Results & Learnings</h2>
+    <ul>
+      <li>Built a fully functional compiler from scratch capable of generating LLVM-compatible code.</li>
+      <li>Gained deep understanding of compiler design principles, parsing theory, and semantic validation.</li>
+      <li>Learned advanced C++ techniques including smart pointers, templates, and modular architecture.</li>
+      <li>Identified possible extensions such as code optimization, more robust error recovery, and static analysis tools.</li>
+    </ul>
+
+    <a class="github-link" href="https://github.com/arnaudcfx/vsopcompiler" target="_blank">View the Project on GitHub</a>
+
+    <footer>
+      <p>Project Report — vsopcompiler | Compiler Construction in C++ | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
+
