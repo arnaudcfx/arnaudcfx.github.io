@@ -38,17 +38,10 @@
       This structure allows for strong encapsulation and reuse: obstacles observe Cymi’s state to adapt their behavior, while Cymi manages user input, random movement, and path rendering.
     </p>
 
-    <div class="photo-gallery">
-      <!-- Add project screenshots here -->
-      <img src="images/game_window.png" alt="Game Window">
-      <img src="images/obstacles.png" alt="Obstacle System">
-      <img src="images/perspective.png" alt="2.5D Perspective Rendering">
-    </div>
-
     <h2>Key Features & Mechanics</h2>
     <ul>
       <li><strong>Perspective Rendering:</strong> The game computes a realistic field of view using trigonometric relations to match the player’s vanishing point.</li>
-      <li><strong>Obstacle Generation:</strong> Obstacles are procedurally generated using uniform random distributions across x and z axes to create varied gameplay.</li>
+      <li><strong>Obstacle Generation:</strong> Obstacles are generated using uniform random distributions across x and z axes to create varied gameplay.</li>
       <li><strong>Optimized Rendering:</strong> Obstacles are sorted by z-axis depth for correct rendering order and scaling to screen coordinates.</li>
       <li><strong>Frame Rate Control:</strong> The system enforces a constant 30 FPS by adjusting loop delays dynamically based on update times.</li>
       <li><strong>Player Controls:</strong> Cymi moves automatically forward and can perform side jumps with randomized movement patterns every two seconds.</li>
@@ -59,13 +52,13 @@
       <li><strong>GameEntity:</strong> Base class for all visible game objects, managing position, drawing, and updates.</li>
       <li><strong>Box:</strong> Derived class implementing 2.5D projection logic for obstacle representation.</li>
       <li><strong>Rubbish, Person, Crate, Barrier:</strong> Specific obstacle classes extending Box to define unique interactions.</li>
-      <li><strong>Cymi:</strong> Player-controlled character handling movement, collision detection, and random behavior.</li>
+      <li><strong>Cymi:</strong> Player character handling movement, collision detection, and random behavior.</li>
       <li><strong>Game:</strong> Central loop controlling updates, rendering, and time management.</li>
     </ul>
 
     <h2>Object-Oriented Design Principles</h2>
     <p>
-      The project strongly emphasizes <strong>inheritance</strong> and <strong>polymorphism</strong> for flexibility in game entities. The choice to avoid the Prototype pattern in favor of polymorphism reduces redundancy and simplifies object management. Each class defines clear responsibilities, enabling modularity and extensibility.
+      The project strongly emphasizes <strong>inheritance</strong> and <strong>polymorphism</strong> for flexibility in game entities. The choice to avoid the Prototype pattern in favor of polymorphism reduces redundancy and simplifies object management. Each class defines clear responsibilities.
     </p>
 
     <h2>Technologies & Tools Used</h2>
@@ -74,23 +67,20 @@
       <li><strong>Makefile</strong> – Build automation and dependency management.</li>
       <li><strong>OOP Patterns</strong> – Inheritance, encapsulation, and polymorphism.</li>
       <li><strong>Mathematics & Trigonometry</strong> – Used for perspective calculations and coordinate transformations.</li>
-      <li><strong>SFML / SDL (optional):</strong> Potential libraries for graphics and event handling.</li>
+      <li><strong>SFML / SDL :</strong> Potential libraries for graphics and event handling.</li>
     </ul>
 
-    <h2>Results & Insights</h2>
-    <p>
-      The project successfully implements a smooth-running 2.5D runner game with a modular and extendable structure. The separation of rendering, input, and entity logic demonstrates a professional software design approach. The experience enhanced practical understanding of <strong>OOP, real-time programming, and game architecture</strong> in C++.
-    </p>
 
     <div class="note">
       <p>
-        In summary, <strong>Drunk Run 2.5D</strong> showcases the integration of geometric computation, event-driven systems, and object-oriented programming within an interactive C++ game environment.
+        In summary, <strong>Drunk Run 2.5D</strong> showw the integration of geometric computation, event systems, and object-oriented programming within an interactive C++ game environment.
       </p>
     </div>
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
+    </div>
 
-    <footer>
-      <p>Project Report — Drunk Run 2.5D | 2025</p>
-    </footer>
+
   </div>
 </body>
 </html>
