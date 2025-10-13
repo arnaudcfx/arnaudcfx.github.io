@@ -2,70 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>INFO0009-Site – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>INFO0009 – Databases Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em; }
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .github-link:hover { background: #1e3799; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem; }
+    h1, h2, h3 { color: #0f766e; }
+    h1 { text-align: center; font-size: 2em; margin-bottom: 1rem; }
+    h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; margin-top: 2.2rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.4rem 0; }
+    .lang-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5em; margin: 1.5em 0; }
+    .lang-tag { background: #ccfbf1; color: #0f766e; border-radius: 6px; padding: 4px 12px; font-size: 0.95em; font-weight: 600; }
+    footer { text-align: center; margin-top: 3rem; color: #6b7280; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>INFO0009-Site</h1>
+    <h1>INFO0009 – Databases Project</h1>
+
     <div class="lang-list">
       <span class="lang-tag">PHP</span>
-      <span class="lang-tag">Hack</span>
+      <span class="lang-tag">SQL</span>
+      <span class="lang-tag">PDO</span>
+      <span class="lang-tag">HTML</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>1. Website Architecture</h2>
     <p>
-      Developed as part of the INFO0009 course, this project is a dynamic web platform built with PHP and Hack. It features data entry forms, user authentication, and information display, giving students a hands-on experience with server-side web development.
+      The web application is centered around the <strong>index.php</strong> file, which dynamically generates the website’s response depending on URL parameters (GET). This main file integrates several PHP components that handle database access, logic, and page rendering. The architecture promotes separation of concerns and modular development.
     </p>
-    <h2>Skills & Technologies</h2>
     <ul>
-      <li>PHP and Hack for backend scripting and templating</li>
-      <li>HTML/CSS for frontend structure and style</li>
-      <li>Session management and user authentication</li>
-      <li>Form validation and secure input handling</li>
-      <li>Database interactions (CRUD operations)</li>
+      <li><strong>migrate.php</strong> – Initializes and populates the database tables from <code>.csv</code> sources.</li>
+      <li><strong>requests.php</strong> – Contains all database queries required for project features.</li>
+      <li><strong>router.php</strong> – Directs the user to the corresponding page based on the request.</li>
+      <li><strong>actions.php</strong> – Executes user-selected queries and passes the data to the associated view.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>2. Database Initialization</h2>
+    <p>
+      If the database is empty, it can be initialized through <code>?page=migrate</code>. The system connects to the <strong>group16</strong> database using the <strong>PDO API</strong> with attributes <code>ATTR_ERRMODE</code> and <code>ERRMODE_EXCEPTION</code> for error handling. Tables are created according to project specifications and populated using the <strong>LOAD DATA LOCAL INFILE</strong> command, which imports data line-by-line while ignoring the first header row.
+    </p>
+
+    <h2>3. SQL Queries</h2>
+    <p>
+      Each SQL query is implemented generically to promote modularity. Named placeholders (<code>:var_name</code>) are used with PDO’s <code>prepare()</code>, <code>bindValue()</code>, and <code>execute()</code> methods for safe, parameterized execution.
+    </p>
+
+    <h3>a) List of Tuples in a Table with Constraints</h3>
+    <p>
+      The user selects a table and defines constraints on its columns. The query dynamically builds an SQL string based on field types:
+    </p>
     <ul>
-      <li>Implements a login system storing user credentials securely using PHP sessions.</li>
-      <li>Processes and validates user forms, providing feedback for errors or successful submissions.</li>
-      <li>Generates dynamic web pages by querying and updating a database using PHP/Hack.</li>
-      <li>Implements modular code to separate logic, data, and presentation layers for maintainability.</li>
+      <li>For text fields: <code>field LIKE CONCAT('%', :string, '%')</code></li>
+      <li>For numeric/date fields: <code>field = :value</code></li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>&lt;?php
-// User login handler (simplified)
-session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-    // Validate credentials (pseudo-code)
-    if (check_credentials($user, $pass)) {
-        $_SESSION['user'] = $user;
-        header('Location: dashboard.php');
-    } else {
-        echo "Invalid login!";
-    }
-}
-?&gt;
-    </code></pre>
-    <h2>Results & Impact</h2>
+
+    <h3>b) List of Countries for a Given Platform</h3>
+    <p>
+      Returns all countries where a given platform is available:
+      <pre><code>SELECT nom, pays FROM Pays WHERE nom = :nom;</code></pre>
+    </p>
+
+    <h3>c) Adding an Episode to an Existing Series</h3>
+    <p>
+      Reads from <code>Serie</code> and <code>Acteur</code> tables, and writes into <code>Episode</code> and <code>Joue_Dans</code> tables. Steps include:
+    </p>
     <ul>
-      <li>Enabled students to practice real-world web development with security and usability in mind.</li>
-      <li>Successfully demonstrated CRUD, authentication, and session management.</li>
-      <li>Provided a base for further learning in web technologies and backend frameworks.</li>
+      <li>Verify the series exists.</li>
+      <li>Insert a new episode into <code>Episodes</code>.</li>
+      <li>Retrieve valid actor IDs from <code>Acteur</code>.</li>
+      <li>Insert entries into <code>Joue_Dans</code> for confirmed actors.</li>
     </ul>
-    <a class="github-link" href="https://github.com/Ecko112/INFO0009-Site" target="_blank">View the project on GitHub</a>
+
+    <h3>d) Users Who Watched All Episodes of “Black Mirror”</h3>
+    <p>
+      Joins <code>Episodes</code>, <code>Personne</code>, and <code>Regarde</code> tables to identify users who watched every episode of a series.
+    </p>
+    <pre><code>SELECT nom, prenom
+FROM Personne NATURAL JOIN Regarde
+WHERE nom_serie = :serie
+GROUP BY nom_serie, numero
+HAVING COUNT(n_episode) = :nbEpisodes;</code></pre>
+
+    <h3>e) Episodes of All Series Sorted by View Count</h3>
+    <p>
+      Extracts and groups episode data by series, season, and episode, then sorts results by view count:
+    </p>
+    <pre><code>SELECT n_episode, n_saison, numero, nom_serie, COUNT(n_episode) AS nb
+FROM Regarde
+GROUP BY n_episode, n_saison, nom_serie
+ORDER BY nom_serie, n_saison DESC, n_episode DESC;</code></pre>
+
+    <h2>Conclusion</h2>
+    <p>
+      This project demonstrates the development of a dynamic, database-driven PHP website using a modular architecture and secure, parameterized SQL queries. It highlights the use of <strong>PDO</strong> for connection handling, <strong>modular query scripts</strong>, and <strong>automatic database initialization</strong> via CSV imports.
+    </p>
+
+    <footer>
+      <p>INFO0009 – Databases Project | University of Liège | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
