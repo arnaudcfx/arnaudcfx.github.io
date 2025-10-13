@@ -20,41 +20,67 @@
     <h1>Projet3-OS</h1>
     <div class="lang-list">
       <span class="lang-tag">C</span>
+      <span class="lang-tag">File System</span>
+      <span class="lang-tag">Virtual Disk</span>
       <span class="lang-tag">Makefile</span>
     </div>
     <h2>Project Description</h2>
     <p>
-      The third and final group project in Operating Systems: implementing a mini operating system with full process, memory, and I/O management.
+      The third OS project focuses on designing and implementing a custom file system atop a virtual disk in C. The system covers all layers: from on-disk data structures (superblock, inodes, bitmaps) to the file API and interaction with a simulated disk driver. The project required a solid understanding of hardware abstractions (sectors, blocks), error handling, and low-level data manipulation.
     </p>
+    <h2>File System Implementation Highlights</h2>
+    <ul>
+      <li>
+        <b>Disk & Block Model:</b> The file system operates on a virtual disk, with a sector size of 1024 bytes. All error codes are negative integers. Blocks are numbered from 0 (superblock) up to the disk size minus one.
+      </li>
+      <li>
+        <b>Core Structures:</b> Includes a <b>superblock</b> (with magic number, block count, inode count, etc.), file control blocks (inodes with direct and indirect pointers), and a bitmap for block allocation.
+      </li>
+      <li>
+        <b>Formatting:</b> <code>format()</code> initializes the disk, writes the superblock, and zeroes out all inode blocks.
+      </li>
+      <li>
+        <b>Mount/Unmount:</b> <code>mount()</code> loads FS metadata and reconstructs allocation bitmaps from disk; <code>unmount()</code> safely shuts down the disk and cleans up.
+      </li>
+      <li>
+        <b>File Operations:</b>
+        <ul>
+          <li><b>create():</b> Allocates and initializes a new inode, returns its number.</li>
+          <li><b>delete(inode_num):</b> Marks the inode as invalid and updates the superblock.</li>
+          <li><b>stat(inode_num):</b> Returns the size of a file if inode is valid.</li>
+          <li><b>read()/write():</b> Reads/writes data with proper block, indirect, and double-indirect pointer handling. Handles offsets, gaps, and file extents.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Bitmap & Allocation:</b> The bitmap array keeps track of block usage. Allocation routines ensure no double-use and handle exhaustion cleanly.
+      </li>
+      <li>
+        <b>Utilities:</b> Includes <code>print_bitmap()</code> for debugging allocation, and <code>do_copyin()</code>/<code>do_copyout()</code> for file import/export to/from the virtual FS.
+      </li>
+      <li>
+        <b>Testing:</b> The <code>main()</code> function demonstrates formatting, mounting, creating, writing, reading, and deleting files end-to-end.
+      </li>
+    </ul>
     <h2>Skills & Technologies</h2>
     <ul>
-      <li>C programming (kernel-level, concurrency)</li>
-      <li>Process and memory management</li>
-      <li>File system and device driver basics</li>
-      <li>Test-driven development</li>
-      <li>Technical documentation and teamwork</li>
+      <li>C programming (kernel and low-level)</li>
+      <li>Custom file system and disk driver abstraction</li>
+      <li>Block-level data management, inodes, and pointer arithmetic</li>
+      <li>Error handling, memory management, and debugging</li>
+      <li>Test-driven system development</li>
     </ul>
     <h2>Code Logic</h2>
     <ul>
-      <li>Integrated all previous modules into a single, multi-tasking OS kernel.</li>
-      <li>Implemented scheduling, paging, file I/O, and device management.</li>
-      <li>Developed user programs to stress-test the OS.</li>
-      <li>Added logging and runtime error handling for system stability.</li>
-      <li>Collaborated on documentation and code reviews.</li>
+      <li>Implements all file system primitives: format, mount, unmount, create, delete, stat, read, write</li>
+      <li>Supports direct and indirect inode addressing for large files</li>
+      <li>Ensures block allocation consistency via bitmaps</li>
+      <li>Includes import/export utilities for file integration with host OS</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Scheduler main loop (simplified)
-while (1) {
-    proc_t *p = next_ready_process();
-    if (p) run_process(p);
-    else idle();
-}
-    </code></pre>
     <h2>Results & Impact</h2>
     <ul>
-      <li>Delivered a working, multi-process OS prototype with basic file and device support.</li>
-      <li>Enhanced skills in systems programming and group project management.</li>
-      <li>Prepared team for more advanced OS and hardware projects.</li>
+      <li>Successfully delivered a working file system simulation atop a virtual disk</li>
+      <li>Demonstrated understanding of on-disk data structures, allocation, and file I/O</li>
+      <li>Provided a robust, extensible base for further OS/FS experiments</li>
     </ul>
     <div class="notice">
       The full source code is not published to respect the academic and group work confidentiality. For more information, please contact me privately.
