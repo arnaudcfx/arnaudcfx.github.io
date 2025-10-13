@@ -18,6 +18,7 @@
     .section { margin-bottom: 2em; }
     .table { background: #f3f3fa; border-radius: 6px; padding: 1em; overflow-x: auto; font-size: 0.97em; }
     .small { font-size: 0.93em; color: #888; }
+    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
   </style>
 </head>
 <body>
@@ -121,45 +122,9 @@
       </ul>
     </div>
 
-    <div class="section">
-      <h2>6. Code Structure (C-like Pseudocode)</h2>
-      <pre><code>
-volatile bool mode = 0; // 0: setup, 1: operating
-volatile bool selectedDisplay = 0;
-volatile bool needUpdateDisplay = 0;
-volatile int limitTenDigit = 0, limitUnitDigit = 0;
-volatile int tenDigit = 0, unitDigit = 0;
-volatile int maxDigit = 9;
-
-interrupt void setup () { /* Handles button events in setup mode */ }
-interrupt void checkBarrier () { /* Handles entry/exit detection in operating mode */ }
-void update_display () { /* Refresh 7-segments in operating mode */ }
-void update_setup_display () { /* Refresh 7-segments in setup mode */ }
-void main () {
-  for (;;) {
-    if (mode == 0) { /* Setup buttons logic */ }
-    else { /* Operating logic and reset detection */ }
-  }
-}
-      </code></pre>
-      <p class="small">Full assembly and C code available in the <a href="https://github.com/maxgoffart/customer-counter" target="_blank">project repository</a>.</p>
+    <div class="notice">
+      The full source code is not published to respect the group work confidentiality.
     </div>
-
-    <div class="section">
-      <h2>7. Results & Learnings</h2>
-      <ul>
-        <li>Reliable real-time counting of customers; no missed events in lab tests.</li>
-        <li>Successfully handled electrical noise thanks to modulated IR and TSOP receivers.</li>
-        <li>Learned the importance of correct sensor selection and robust circuit design.</li>
-        <li>Achieved a practical solution with affordable microcontroller hardware.</li>
-        <li>Improved understanding of embedded interrupts, digital interfacing, and debugging.</li>
-      </ul>
-      <p class="small">
-        See demo video and schematics in the project documentation.
-      </p>
-    </div>
-
-    <a class="github-link" href="https://github.com/maxgoffart/customer-counter" target="_blank">View the project on GitHub</a>
   </div>
 </body>
 </html>
