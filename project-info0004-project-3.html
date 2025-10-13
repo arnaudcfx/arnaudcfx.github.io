@@ -2,68 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>info0004-project-3 – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Drunk Run 2.5D – Object-Oriented C++ Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em;}
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .github-link { display: block; background: #5e6ad2; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .github-link:hover { background: #1e3799; }
+    body { font-family: 'Inter', Arial, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 3rem auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 3rem; }
+    h1, h2, h3, h4 { color: #1e40af; }
+    h1 { text-align: center; margin-bottom: 2rem; }
+    h2 { border-bottom: 2px solid #cbd5e1; padding-bottom: 0.4rem; margin-top: 2.5rem; }
+    h3 { color: #334155; margin-top: 1.5rem; }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.3rem 0; }
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .photo-gallery img { width: 260px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .photo-gallery img:hover { transform: scale(1.03); }
+    .note { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>info0004-project-3</h1>
-    <div class="lang-list">
-      <span class="lang-tag">C++</span>
-      <span class="lang-tag">Makefile</span>
-    </div>
-    <h2>Project Description</h2>
+    <h1>Drunk Run 2.5D – Object-Oriented Programming Project</h1>
+
+    <h2>Project Summary</h2>
     <p>
-      INFO0004 - Object-oriented programming project 3: a software engineering exercise focused on implementing advanced OOP concepts in C++.
+      <strong>Drunk Run 2.5D</strong> is a C++ project developed as part of the <strong>INFO0004 – Object-Oriented Programming</strong> course. The goal was to design a 2.5D game where the player controls a character named <strong>Cymi</strong> who runs through a perspective-based environment filled with obstacles. The project focuses on object-oriented design, real-time graphics, and game loop management in C++.
     </p>
-    <h2>Skills & Technologies</h2>
+
+    <h2>Architecture Overview</h2>
+    <p>
+      The central class <strong>Game</strong> manages the window creation, rendering loop, score display, and global elements. It contains a vector of obstacles (e.g., Rubbish, Person, Crate, Barrier) and a <strong>Cymi</strong> object representing the player. Each obstacle inherits from the <strong>Box</strong> class, itself derived from the base class <strong>GameEntity</strong>, enabling 2.5D projection behavior and interaction with Cymi’s movements.
+    </p>
+    <p>
+      This structure allows for strong encapsulation and reuse: obstacles observe Cymi’s state to adapt their behavior, while Cymi manages user input, random movement, and path rendering.
+    </p>
+
+    <div class="photo-gallery">
+      <!-- Add project screenshots here -->
+      <img src="images/game_window.png" alt="Game Window">
+      <img src="images/obstacles.png" alt="Obstacle System">
+      <img src="images/perspective.png" alt="2.5D Perspective Rendering">
+    </div>
+
+    <h2>Key Features & Mechanics</h2>
     <ul>
-      <li>C++ programming (classes, inheritance, polymorphism)</li>
-      <li>Design Patterns (e.g., Factory, Observer)</li>
-      <li>Unit testing and debugging</li>
-      <li>Makefile automation</li>
-      <li>Code documentation and UML diagrams</li>
+      <li><strong>Perspective Rendering:</strong> The game computes a realistic field of view using trigonometric relations to match the player’s vanishing point.</li>
+      <li><strong>Obstacle Generation:</strong> Obstacles are procedurally generated using uniform random distributions across x and z axes to create varied gameplay.</li>
+      <li><strong>Optimized Rendering:</strong> Obstacles are sorted by z-axis depth for correct rendering order and scaling to screen coordinates.</li>
+      <li><strong>Frame Rate Control:</strong> The system enforces a constant 30 FPS by adjusting loop delays dynamically based on update times.</li>
+      <li><strong>Player Controls:</strong> Cymi moves automatically forward and can perform side jumps with randomized movement patterns every two seconds.</li>
     </ul>
-    <h2>Code Logic</h2>
+
+    <h2>Technical Design</h2>
     <ul>
-      <li>Defines a set of base and derived classes to model entities and behaviors.</li>
-      <li>Implements design patterns for extensibility and maintainability.</li>
-      <li>Encapsulates data and logic using C++ best practices.</li>
-      <li>Automates builds and testing via Makefile targets.</li>
-      <li>Includes test cases for all major class interactions.</li>
+      <li><strong>GameEntity:</strong> Base class for all visible game objects, managing position, drawing, and updates.</li>
+      <li><strong>Box:</strong> Derived class implementing 2.5D projection logic for obstacle representation.</li>
+      <li><strong>Rubbish, Person, Crate, Barrier:</strong> Specific obstacle classes extending Box to define unique interactions.</li>
+      <li><strong>Cymi:</strong> Player-controlled character handling movement, collision detection, and random behavior.</li>
+      <li><strong>Game:</strong> Central loop controlling updates, rendering, and time management.</li>
     </ul>
-    <h2>Sample Code</h2>
-    <pre><code>// Example: Factory pattern in C++
-class Shape {
-  public: virtual void draw() = 0;
-};
-class Circle : public Shape {
-  public: void draw() override { /* ... */ }
-};
-Shape* createShape(std::string type) {
-  if (type == "circle") return new Circle();
-  // ...
-  return nullptr;
-}
-    </code></pre>
-    <h2>Results & Impact</h2>
+
+    <h2>Object-Oriented Design Principles</h2>
+    <p>
+      The project strongly emphasizes <strong>inheritance</strong> and <strong>polymorphism</strong> for flexibility in game entities. The choice to avoid the Prototype pattern in favor of polymorphism reduces redundancy and simplifies object management. Each class defines clear responsibilities, enabling modularity and extensibility.
+    </p>
+
+    <h2>Technologies & Tools Used</h2>
     <ul>
-      <li>Produced well-structured, extensible C++ codebase.</li>
-      <li>Demonstrated understanding of OOP and design patterns.</li>
-      <li>Well received in code reviews and course evaluation.</li>
+      <li><strong>C++</strong> – Core language for all classes and game logic.</li>
+      <li><strong>Makefile</strong> – Build automation and dependency management.</li>
+      <li><strong>OOP Patterns</strong> – Inheritance, encapsulation, and polymorphism.</li>
+      <li><strong>Mathematics & Trigonometry</strong> – Used for perspective calculations and coordinate transformations.</li>
+      <li><strong>SFML / SDL (optional):</strong> Potential libraries for graphics and event handling.</li>
     </ul>
-    <a class="github-link" href="https://github.com/adilayman/info0004-project-3" target="_blank">View the project on GitHub</a>
+
+    <h2>Results & Insights</h2>
+    <p>
+      The project successfully implements a smooth-running 2.5D runner game with a modular and extendable structure. The separation of rendering, input, and entity logic demonstrates a professional software design approach. The experience enhanced practical understanding of <strong>OOP, real-time programming, and game architecture</strong> in C++.
+    </p>
+
+    <div class="note">
+      <p>
+        In summary, <strong>Drunk Run 2.5D</strong> showcases the integration of geometric computation, event-driven systems, and object-oriented programming within an interactive C++ game environment.
+      </p>
+    </div>
+
+    <footer>
+      <p>Project Report — Drunk Run 2.5D | 2025</p>
+    </footer>
   </div>
 </body>
 </html>
