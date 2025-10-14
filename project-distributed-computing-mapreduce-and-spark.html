@@ -2,65 +2,228 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Distributed Computing: MapReduce & Spark – Project Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Distributed Computing – MapReduce & Spark</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; margin:0; }
-    .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.09); padding: 2.5rem; }
-    h1 { text-align: center; color: #1e3799; }
-    h2 { color: #5e6ad2; margin-top: 2em; }
-    pre, code { background: #f3f3fa; border-radius: 6px; padding: 0.5em 1em; display: block; }
-    .lang-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 1.2em 0 1.5em 0; }
-    .lang-tag { background: #eef0fb; color: #5e6ad2; border-radius: 4px; padding: 2px 10px; font-size: 0.95em; font-weight: 600; letter-spacing: 0.01em; }
-    .gitlab-link { display: block; background: #fc6d26; color: #fff; border-radius: 6px; padding: 0.8em 1em; text-align: center; margin-top: 2em; font-size: 1.1em; text-decoration: none; font-weight: 600; transition: background 0.16s; }
-    .gitlab-link:hover { background: #b34b00; }
-    .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f9fafc;
+      color: #1e1b2e;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 3rem;
+    }
+    h1, h2, h3 {
+      color: #6d28d9;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #6d28d9, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      border-bottom: 2px solid #ede9fe;
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+    }
+    p { margin: 0.8rem 0; text-align: justify; }
+    ul { margin: 0.8rem 0 1rem 2rem; }
+    li { margin: 0.4rem 0; }
+    pre {
+      background-color: #f3f0ff;
+      border-left: 4px solid #7c3aed;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    code {
+      background-color: #f3f0ff;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      color: #6d28d9;
+      font-weight: 500;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    th {
+      background-color: #ede9fe;
+      color: #4c1d95;
+    }
+    .lang-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin: 1.5em 0;
+    }
+    .lang-tag {
+      background: #ede9fe;
+      color: #5b21b6;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 0.95em;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #6b7280;
+      font-size: 0.9em;
+    }
+    a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  .notice { background: #fff3cd; color: #856404; border-radius: 6px; padding: 1em 1.2em; margin-top: 2em; font-size: 1.05em; border-left: 5px solid #ffe066; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Distributed Computing: MapReduce &amp; Spark</h1>
+    <h1>Distributed Computing – MapReduce & Spark</h1>
+    <p><strong>University of Liège | INFO0009 Course Project</strong></p>
+    <p>
+      This project demonstrates a distributed data-processing solution using <strong>Hadoop MapReduce</strong> and <strong>Apache Spark</strong> 
+      for analyzing large-scale film datasets. The goal was to automate and optimize two computational challenges:
+      (A) determining the degrees of separation between actors, and 
+      (B) calculating average movie ratings per actor.
+      The project emphasizes containerized deployment, scalable computation, and performance benchmarking.
+    </p>
+
     <div class="lang-list">
       <span class="lang-tag">Python</span>
+      <span class="lang-tag">Scala</span>
+      <span class="lang-tag">Docker</span>
+      <span class="lang-tag">Hadoop</span>
       <span class="lang-tag">Spark</span>
-      <span class="lang-tag">MapReduce</span>
+      <span class="lang-tag">GitLab</span>
     </div>
-    <h2>Project Description</h2>
+
+    <h2>1. Setup & Environment</h2>
     <p>
-      University course project focused on distributed data processing using MapReduce and Apache Spark. The goal was to understand and implement scalable algorithms for big data analytics.
+      The distributed environment was deployed using <strong>Docker containers</strong> configured with Hadoop and Spark nodes 
+      based on a public repository by Christophe Debruyne. 
+      After cloning the Docker setup, the system was launched with:
     </p>
-    <h2>Skills & Technologies</h2>
-    <ul>
-      <li>Python for scripting and algorithm development</li>
-      <li>Apache Spark for distributed computation</li>
-      <li>MapReduce paradigm for scalable data processing</li>
-      <li>Cluster computing concepts</li>
-      <li>Data analysis and reporting</li>
-    </ul>
-    <h2>Code Logic</h2>
-    <ul>
-      <li>Implemented classic MapReduce algorithms (e.g., word count, join, aggregation) in Python.</li>
-      <li>Used PySpark to process large datasets in parallel across a cluster.</li>
-      <li>Optimized data pipelines for performance and scalability.</li>
-      <li>Analyzed and visualized results to report on efficiency and accuracy.</li>
-    </ul>
-    <h2>Sample Code</h2>
-    <pre><code># Example: Word count with PySpark
-from pyspark import SparkContext
-sc = SparkContext()
-counts = sc.textFile("data.txt") \
-           .flatMap(lambda line: line.split()) \
-           .map(lambda word: (word, 1)) \
-           .reduceByKey(lambda a, b: a + b)
-print(counts.collect())
+    <pre><code>docker-compose up</code></pre>
+    <p>
+      Once the cluster was active, we copied our dataset and scripts to the Hadoop namenode and Spark master:
+    </p>
+    <pre><code>
+docker cp file.tsv node:file.tsv
+docker cp degrees.py node:degrees.py
+docker cp degrees.scala node:degrees.scala
+docker cp average_rating.py node:average_rating.py
+docker cp average_rating.scala node:average_rating.scala
     </code></pre>
-    <h2>Results & Impact</h2>
+    <p>
+      A data directory was created within HDFS to store all project files:
+    </p>
+    <pre><code>
+hdfs dfs -mkdir -p /data/
+hdfs dfs -put file.tsv /data/file.tsv
+    </code></pre>
+
+    <p>
+      Execution commands:
+    </p>
     <ul>
-      <li>Processed datasets exceeding several gigabytes efficiently.</li>
-      <li>Demonstrated real-world distributed data analytics skills.</li>
-      <li>Produced a technical report and presented findings to peers and faculty.</li>
+      <li>Run Hadoop code: <code>docker exec -it namenode bash</code> → <code>python3 degrees.py -r hadoop file.tsv</code></li>
+      <li>Run Spark code: <code>docker exec -it spark-master bash</code> → <code>spark/bin/spark-shell --master spark://spark-master:7077</code> then <code>:load average_rating.scala</code></li>
     </ul>
-    <a class="gitlab-link" href="https://gitlab.uliege.be/Arnaud.Crucifix/distributed-computing-mapreduce-and-spark" target="_blank">View the project on GitLab</a>
+
+    <p>
+      Code repository: 
+      <a href="https://gitlab.uliege.be/Arnaud.Crucifix/distributed-computing-mapreduce-and-spark" target="_blank">
+        View on GitLab (Private)
+      </a>
+    </p>
+
+    <h2>2. Challenges Faced</h2>
+    <p>
+      During development, several issues were encountered when executing Python and Scala jobs within the Docker containers. 
+      We resolved dependency problems by reconfiguring Debian repositories and updating all packages:
+    </p>
+    <pre><code>
+echo "deb http://archive.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
+apt-get update
+apt-get install python3-pip
+pip install mrjob
+    </code></pre>
+    <p>
+      While the MapReduce tasks ran successfully on the Hadoop namenode, the Scala Spark implementation of Challenge A 
+      (degrees of separation) encountered memory bottlenecks and did not complete on large datasets. 
+      This was mitigated by optimizing partitioning and executor memory, but execution remained limited to smaller datasets.
+    </p>
+
+    <h2>3. Algorithmic Overview</h2>
+
+    <h3>Challenge A – Degrees of Separation Between Actors</h3>
+    <p>
+      The algorithm computes the minimal degree of separation between a target actor and others through common films. 
+      Implemented using iterative MapReduce jobs:
+    </p>
+    <ul>
+      <li><strong>Map Phase:</strong> Extract actor-film pairs, assigning a degree of 0 to the target actor and 1000 to others.</li>
+      <li><strong>Reduce Phase:</strong> Aggregate films per actor and update degrees iteratively.</li>
+      <li>The process repeats until all reachable actors receive a valid degree.</li>
+    </ul>
+    <p>
+      The Spark implementation mirrors this logic with RDD transformations, achieving faster in-memory computations.
+    </p>
+
+    <h3>Challenge B – Average Rating per Actor</h3>
+    <p>
+      This task merges <code>title.principals.tsv</code> and <code>title.ratings.tsv</code> to compute each actor’s mean rating across all films.
+    </p>
+    <ul>
+      <li><strong>Map Phase:</strong> Emit pairs of <code>(film, ("R", rating))</code> and <code>(film, actor)</code>.</li>
+      <li><strong>Reduce Phase:</strong> Combine these pairs to map ratings to actors, then compute averages.</li>
+      <li>Spark implementation uses DataFrame operations and <code>groupBy()</code> + <code>avg()</code> functions.</li>
+    </ul>
+
+    <h2>4. Performance Analysis</h2>
+    <p>
+      The performance comparison highlights Spark’s in-memory optimization, significantly reducing execution time.
+    </p>
+    <table>
+      <tr><th>Implementation</th><th>Execution Time</th></tr>
+      <tr><td>Challenge A (Hadoop – Python)</td><td>1h 43min</td></tr>
+      <tr><td>Challenge A (Spark – Scala)</td><td>Failed on large dataset</td></tr>
+      <tr><td>Challenge B (Hadoop – Python)</td><td>10 min</td></tr>
+      <tr><td>Challenge B (Spark – Scala)</td><td>1 min 33 sec</td></tr>
+    </table>
+    
+    <div class="notice">
+      The full source code is not published to respect the academic and group work confidentiality.
+    </div>
+
+    <footer>
+      <p>© 2025 | Distributed Computing Project – University of Liège/p>
+    </footer>
   </div>
 </body>
 </html>
+
+
