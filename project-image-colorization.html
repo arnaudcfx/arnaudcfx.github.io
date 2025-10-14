@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INFO8010: Image Colorization</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      color: #2563eb;
+    }
+    p, li {
+      margin-bottom: 0.75rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    img {
+      max-width: 100%;
+      margin: 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>INFO8010: Image Colorization</h1>
+
+    <div class="section">
+      <h2>I. Introduction</h2>
+      <p>This project aims to colorize old grayscale photographs, such as WWII images. Instead of focusing on historical accuracy, we learn to assign plausible colors based on image textures. Generative models and deep learning techniques are used to produce realistic colorization results.</p>
+    </div>
+
+    <div class="section">
+      <h2>II. Related Work</h2>
+      <h3>A. Generative Models</h3>
+      <ul>
+        <li><strong>GANs</strong>: Adversarial networks composed of generator and discriminator; produce realistic images but can be hard to train.</li>
+        <li><strong>VAEs</strong>: Autoencoder variants that learn probabilistic latent spaces; easier to train but outputs may be blurry.</li>
+        <li><strong>Diffusion Models</strong>: Hierarchical VAEs with strong constraints; achieve state-of-the-art results but resource-intensive.</li>
+      </ul>
+      <h3>B. Image Colorization</h3>
+      <ul>
+        <li>Early methods required human-marked color references and lacked generalization.</li>
+        <li>Deep learning architectures like Encoder-Decoder ConvNets and conditional GANs allow fully automated colorization.</li>
+        <li>GANs produce sharper, more vivid colors, while ConvNets often yield dimmer results due to averaging in L2 loss.</li>
+        <li>VAEs allow probabilistic generation, but may produce over-smooth outputs.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>III. Methods</h2>
+      <h3>A. Datasets</h3>
+      <p>We used the Alaska2 dataset (80,000 JPEG images), selected for varied textures to train our model on image texture rather than content.</p>
+
+      <h3>B. Image Preprocessing</h3>
+      <ul>
+        <li>Images resized to 75x100 pixels (4:3 format).</li>
+        <li>YCbCr color-space used: Luminance (Y) is the grayscale input; Cb and Cr channels are generated.</li>
+      </ul>
+
+      <h3>C. Model Architecture</h3>
+      <ul>
+        <li>Conditional VAE (cVAE) used instead of cGAN due to training complexity.</li>
+        <li>Two encoders: one for grayscale Luminance and one for colored image.</li>
+        <li>Decoder reconstructs the two chrominance channels (Cb and Cr).</li>
+        <li>Building blocks include <strong>Double Convolution</strong> (Conv + BatchNorm + ReLU/LeakyReLU), Down (pooling + conv blocks), and Up (upsampling + conv blocks).</li>
+        <li>Encoders: 10 convolutional layers + 1 linear layer; Decoder: 5 convolutional layers + 1 linear layer.</li>
+        <li>Training: batch size 64, learning rate 0.00001, Adam optimizer, minimizing MSE loss between generated and ground truth chrominance.</li>
+      </ul>
+      <img src="cvAE-diagram.png" alt="Conditional VAE Architecture Diagram">
+    </div>
+
+    <div class="section">
+      <h2>IV. Results</h2>
+      <ul>
+        <li>Initial batches produce mostly green outputs, improving quickly as the network learns.</li>
+        <li>After one epoch: grayish images with partial colorization appear.</li>
+        <li>After 10 epochs: skies, water, and vegetation are correctly colored; buildings acquire yellow-orange shades in night scenes.</li>
+      </ul>
+      <img src="epoch1.png" alt="Output after 1 epoch">
+      <img src="epoch10.png" alt="Output after 10 epochs">
+      <p>MSE loss decreases slowly; KL loss drops quickly, possibly indicating vanishing gradient or suboptimal MSE loss.</p>
+    </div>
+
+    <div class="section">
+      <h2>V. Discussion</h2>
+      <ul>
+        <li>Limited computational resources (GPU access) restricted hyperparameter tuning and dataset usage.</li>
+        <li>Small image resolution limits information available for learning.</li>
+        <li>Texture-based colorization may fail on ambiguous textures (e.g., ground or ceiling misidentified as sky).</li>
+        <li>Future improvements: use PSNR or KL divergence loss, and experiment with input using only chrominance channels or full VAE encoders for better sampling.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+
