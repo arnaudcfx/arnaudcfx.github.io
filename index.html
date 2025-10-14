@@ -24,18 +24,18 @@
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
-    
+
     * { box-sizing: border-box; }
-    body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%); margin:0; padding:0; color: var(--dark); line-height:1.6; }
-    .container { max-width: 1200px; margin:0 auto; padding:2rem 1.5rem; }
+    body { font-family:'Inter', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%); margin:0; padding:0; color: var(--dark); line-height:1.6; }
+    .container { max-width:1200px; margin:0 auto; padding:2rem 1.5rem; }
     header { text-align:center; margin-bottom:3rem; padding-top:1rem; }
-    h1 { font-size:2.5rem; font-weight:700; margin-bottom:0.5rem; color: var(--dark); background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h1 { font-size:2.5rem; font-weight:700; margin-bottom:0.5rem; color: var(--dark); background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .subtitle { font-size:1.1rem; color: var(--gray); max-width:600px; margin:0 auto 1.5rem; }
     .filter-bar { display:flex; justify-content:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:2.5rem; }
     .filter-btn { background:white; border:1px solid var(--gray-light); border-radius:50px; padding:0.5rem 1.25rem; font-size:0.9rem; font-weight:500; color: var(--secondary); cursor:pointer; transition: all 0.2s ease; }
     .filter-btn:hover { background: var(--primary-light); color: var(--primary); }
     .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-    .repo-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap:2rem; }
+    .repo-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(350px,1fr)); gap:2rem; }
     .repo-card { background:white; border-radius:var(--border-radius); box-shadow:var(--shadow); padding:1.75rem; text-decoration:none; color:inherit; transition: all 0.3s ease; display:flex; flex-direction:column; height:100%; position:relative; overflow:hidden; border-top:4px solid var(--primary); }
     .repo-card:hover, .repo-card:focus { transform: translateY(-8px); box-shadow: var(--shadow-hover); outline:none; }
     .repo-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); transform: scaleX(0); transform-origin:left; transition: transform 0.3s ease; }
@@ -56,7 +56,13 @@
     .thesis-card:hover { box-shadow: 0 0 30px rgba(37, 99, 235, 0.8); }
 
     footer { text-align:center; margin-top:4rem; padding:2rem 0; color: var(--gray); font-size:0.9rem; border-top:1px solid var(--gray-light); }
-    @media (max-width:768px) { .repo-grid { grid-template-columns:1fr; } h1 { font-size:2rem; } .container { padding:1.5rem 1rem; } .lang-list { padding-right:70px; } }
+
+    @media(max-width:768px) {
+      .repo-grid { grid-template-columns:1fr; }
+      h1 { font-size:2rem; }
+      .container { padding:1.5rem 1rem; }
+      .lang-list { padding-right:70px; }
+    }
   </style>
 </head>
 <body>
@@ -75,15 +81,13 @@
   </header>
 
   <div class="repo-grid">
-    <!-- Master Thesis: Legal Taxonomy Explorer -->
+    <!-- Master Thesis -->
     <a class="repo-card thesis-card" href="project-legal-taxonomy-explorer.html" data-categories="python web">
       <div class="card-header">
         <h3>Legal Taxonomy Explorer</h3>
         <span class="repo-badge">🎓 Master Thesis</span>
       </div>
-      <p>
-        Master thesis automating the <strong>Fund Review</strong> process for law firms using <strong>AI Document Intelligence</strong>, <strong>Regex extraction</strong>, <strong>Knowledge Graphs</strong>, and <strong>Generative AI</strong> for semantic analysis of legal documents.
-      </p>
+      <p>Automates the Fund Review process using AI Document Intelligence, Regex extraction, Knowledge Graphs, and Generative AI for legal documents analysis.</p>
       <div class="lang-list">
         <span class="lang-tag primary">React</span>
         <span class="lang-tag">.NET Core</span>
@@ -101,9 +105,7 @@
         <h3>Automated Customer Counter (IR Barrier)</h3>
         <span class="repo-badge">Embedded</span>
       </div>
-      <p>
-        IR-based customer counter using a PIC16F1789 microcontroller for real-time tracking of entries/exits in shops, improving accuracy over manual methods.
-      </p>
+      <p>IR-based customer counter with PIC16F1789 microcontroller for real-time shop entry/exit tracking.</p>
       <div class="lang-list">
         <span class="lang-tag primary">Embedded C / Assembly</span>
         <span class="lang-tag">Microcontroller (PIC16F1789)</span>
@@ -119,9 +121,7 @@
         <h3>High Performance Scientific Computing</h3>
         <span class="repo-badge">Parallel Computing</span>
       </div>
-      <p>
-        Optimized FDTD simulation for wave propagation using <strong>OpenMP</strong> and <strong>MPI</strong>, analyzing performance and scalability in parallel computing environments.
-      </p>
+      <p>FDTD wave propagation simulation optimized with OpenMP and MPI for performance and scalability analysis.</p>
       <div class="lang-list">
         <span class="lang-tag primary">C</span>
         <span class="lang-tag">MPI</span>
@@ -138,9 +138,7 @@
         <h3>MathAlgo</h3>
         <span class="repo-badge">Numerical Computing</span>
       </div>
-      <p>
-        Sparse matrix operations for scientific computing, focusing on efficient storage and manipulation of large, mostly-zero matrices.
-      </p>
+      <p>Sparse matrix operations for scientific computing, focusing on memory efficiency.</p>
       <div class="lang-list">
         <span class="lang-tag primary">C</span>
         <span class="lang-tag">Makefile</span>
@@ -154,9 +152,7 @@
         <h3>Dynamic Web Platform</h3>
         <span class="repo-badge">Full Stack</span>
       </div>
-      <p>
-        PHP-based dynamic web application with modular architecture, separating database access, logic, and page rendering for maintainable full-stack development.
-      </p>
+      <p>PHP web app with modular architecture separating database access, logic, and rendering for maintainable development.</p>
       <div class="lang-list">
         <span class="lang-tag primary">PHP</span>
         <span class="lang-tag">SQL</span>
@@ -166,64 +162,162 @@
       </div>
     </a>
 
-    <!-- OS Projects -->
-    <a class="repo-card" href="project-vsop-compiler.html" data-categories="c os">
+    <!-- File Explorer (formerly Algorithms & Data Structures) -->
+    <a class="repo-card" href="project-info0027-projects.html" data-categories="java c python">
+      <div class="card-header">
+        <h3>File Explorer</h3>
+        <span class="repo-badge">CS Fundamentals</span>
+      </div>
+      <p>Extensible OOP project implementing multiple design patterns for file management, with recursive cloning, aliasing, and compression.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Java</span>
+        <span class="lang-tag">Design Patterns</span>
+        <span class="lang-tag">OOP</span>
+        <span class="lang-tag">Swing GUI</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- Deep Learning -->
+    <a class="repo-card" href="project-projet-deep-learning.html" data-categories="python">
+      <div class="card-header">
+        <h3>Handwritten Image Recognition</h3>
+        <span class="repo-badge">AI/ML</span>
+      </div>
+      <p>CNN + BiLSTM model for recognizing handwritten text from scanned documents using PyTorch and CTC decoding.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Python</span>
+        <span class="lang-tag">PyTorch</span>
+        <span class="lang-tag">Jupyter</span>
+        <span class="lang-tag">CNN</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- Discrete-Time Markov Chains -->
+    <a class="repo-card" href="project-code.html" data-categories="python">
+      <div class="card-header">
+        <h3>Discrete-Time Markov Chains</h3>
+        <span class="repo-badge">Simulation</span>
+      </div>
+      <p>SIR epidemic model simulation using discrete-time Markov chains to study disease spread under different network structures and mitigation strategies.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Python</span>
+        <span class="lang-tag">Markov Chains</span>
+        <span class="lang-tag">Simulation</span>
+        <span class="lang-tag">Data Analysis</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- SPEAM Academic Project -->
+    <a class="repo-card" href="project-speam-team6.html" data-categories="python">
+      <div class="card-header">
+        <h3>VeGApp – Autonomous Vegetable Garden</h3>
+        <span class="repo-badge">IoT & Mobile</span>
+      </div>
+      <p>Smart gardening app integrating Flutter frontend, Java Spring Boot backend, PostgreSQL, and CI/CD for automated garden management.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Flutter</span>
+        <span class="lang-tag">Java</span>
+        <span class="lang-tag">Spring Boot</span>
+        <span class="lang-tag">PostgreSQL</span>
+        <span class="lang-tag">Docker</span>
+        <span class="lang-tag">OpenShift</span>
+        <span class="lang-tag">GitLab CI/CD</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- Discussion Forum Platform -->
+    <a class="repo-card" href="project-info9014-discussion-forum.html" data-categories="web">
+      <div class="card-header">
+        <h3>Discussion Forum Platform</h3>
+        <span class="repo-badge">Web Application</span>
+      </div>
+      <p>Ontology-based forum platform mapping threads, posts, and users to RDF knowledge graph for semantic querying.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">OWL 2 RL</span>
+        <span class="lang-tag">RDF</span>
+        <span class="lang-tag">R2RML</span>
+        <span class="lang-tag">MySQL</span>
+        <span class="lang-tag">Protégé</span>
+        <span class="lang-tag">Python (rdflib)</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- HeroTrainer -->
+    <a class="repo-card" href="project-herotrainer.html" data-categories="java web">
+      <div class="card-header">
+        <h3>HeroTrainer App</h3>
+        <span class="repo-badge">Cross-Platform</span>
+      </div>
+      <p>Cross-platform training app with Java backend, Flutter/Dart frontend, and HTML integration.</p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Java</span>
+        <span class="lang-tag">Dart</span>
+        <span class="lang-tag">HTML</span>
+        <span class="lang-tag">Flutter</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- VSOP Compiler -->
+    <a class="repo-card" href="project-vsopcompiler.html" data-categories="c++">
       <div class="card-header">
         <h3>VSOP Compiler</h3>
-        <span class="repo-badge">Operating Systems</span>
+        <span class="repo-badge">Compiler Design</span>
       </div>
-      <p>
-        Compiler for a subset of Java-like language (VSOP) including lexical analysis, parsing, semantic checking, and code generation for an educational OS project.
-      </p>
+      <p>Compiler for VSOP language including lexer, parser, semantic analysis, and LLVM code generation.</p>
       <div class="lang-list">
-        <span class="lang-tag primary">C</span>
-        <span class="lang-tag">Compiler</span>
+        <span class="lang-tag primary">C++</span>
+        <span class="lang-tag">Yacc</span>
+        <span class="lang-tag">Lex</span>
+        <span class="lang-tag">LLVM</span>
         <span class="visibility-badge public-badge">Public</span>
       </div>
     </a>
 
-    <a class="repo-card" href="project-hero-trainer.html" data-categories="c os">
+    <!-- Distributed Computing -->
+    <a class="repo-card" href="project-distributed-computing-mapreduce-and-spark.html" data-categories="python">
       <div class="card-header">
-        <h3>HeroTrainer OS Simulation</h3>
-        <span class="repo-badge">Operating Systems</span>
+        <h3>Distributed Computing</h3>
+        <span class="repo-badge">Big Data</span>
       </div>
-      <p>
-        Simulation of an educational operating system including process scheduling, memory management, and inter-process communication.
-      </p>
+      <p>MapReduce and Spark frameworks used for distributed data processing and large-scale computation.</p>
       <div class="lang-list">
-        <span class="lang-tag primary">C</span>
-        <span class="lang-tag">OS Simulation</span>
-        <span class="visibility-badge public-badge">Public</span>
+        <span class="lang-tag primary">Python</span>
+        <span class="lang-tag">Spark</span>
+        <span class="lang-tag">MapReduce</span>
+        <span class="lang-tag">Hadoop</span>
+        <span class="visibility-badge private-badge">Private</span>
       </div>
     </a>
 
-    <!-- You can add remaining cards like SPEAM, Deep Learning, File Explorer, etc., following the same structure -->
   </div>
 
   <footer>
-    <p>© 2025 | Designed by Arnaud CRRUCIFIX</p>
+    <p>© 2025 | Designed by Arnaud CRUCIFIX</p>
   </footer>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const repoCards = document.querySelectorAll('.repo-card');
-    filterButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        const filterValue = this.getAttribute('data-filter');
-        repoCards.forEach(card => {
-          if(filterValue === 'all') { card.style.display = 'flex'; }
-          else {
-            const categories = card.getAttribute('data-categories');
-            card.style.display = categories && categories.includes(filterValue) ? 'flex' : 'none';
-          }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const repoCards = document.querySelectorAll('.repo-card');
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      const filterValue = this.getAttribute('data-filter');
+      repoCards.forEach(card => {
+        if(filterValue==='all'){ card.style.display='flex'; }
+        else{ card.style.display = card.getAttribute('data-categories').includes(filterValue)?'flex':'none'; }
       });
     });
   });
+});
 </script>
 </body>
 </html>
