@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku SAT Solver</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      color: #2563eb;
+    }
+    p, li {
+      margin-bottom: 0.75rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    img {
+      max-width: 100%;
+      margin: 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sudoku SAT Solver</h1>
+    <p>This project encodes N×N Sudoku constraints into SAT formulas and solves them efficiently. The solver supports 4x4, 9x9, and 16x16 grids by systematically encoding each cell and constraint into CNF form.</p>
+    
+    <h2>Encoding to SAT</h2>
+    <p>Each cell (i,j) contains a value k (1 ≤ i,j,k ≤ N). Constraints applied:</p>
+    <ul>
+      <li>Each cell must have a number between 1 and N.</li>
+      <li>Each row and column contains distinct numbers.</li>
+      <li>Each n×n square contains distinct numbers.</li>
+    </ul>
+
+    <h2>Algorithm Steps</h2>
+    <ul>
+      <li>Assign a candidate value to each cell.</li>
+      <li>Check column and row constraints for uniqueness.</li>
+      <li>Check n×n square constraints.</li>
+      <li>Propagate constraints recursively to solve the Sudoku.</li>
+      <li>Adjust encoding for 16x16 Sudoku by using two-digit numbers.</li>
+    </ul>
+
+    <h2>Program Features</h2>
+    <img src="sudoku2.png" alt="Sudoku Solver Illustration">
+    <p>The solver works efficiently for standard 9x9 Sudokus, smaller 4x4 puzzles, and adapts to larger 16x16 grids with consistent CNF representation.</p>
+  </div>
+</body>
+</html>
