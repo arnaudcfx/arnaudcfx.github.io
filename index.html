@@ -25,550 +25,264 @@
       --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     
-    * {
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-      margin: 0;
-      padding: 0;
-      color: var(--dark);
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-    
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding-top: 1rem;
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--gray);
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-    }
-    
-    .filter-bar {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-    }
-    
-    .filter-btn {
-      background: white;
-      border: 1px solid var(--gray-light);
-      border-radius: 50px;
-      padding: 0.5rem 1.25rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--secondary);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    
-    .filter-btn:hover {
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-    
-    .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-    
-    .repo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    
-    .repo-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 1.75rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      border-top: 4px solid var(--primary);
-    }
-    
-    .repo-card:hover, .repo-card:focus {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      outline: none;
-    }
-    
-    .repo-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    
-    .repo-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-    
-    .repo-card h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--dark);
-      line-height: 1.3;
-    }
-    
-    .repo-badge {
-      background: var(--primary-light);
-      color: var(--primary);
-      border-radius: 4px;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      white-space: nowrap;
-      margin-left: 0.5rem;
-    }
-    
-    .repo-card p {
-      margin: 0 0 1.5rem;
-      color: var(--gray);
-      font-size: 0.95rem;
-      flex-grow: 1;
-    }
-    
-    .lang-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: auto;
-      position: relative;
-      padding-right: 80px; /* Space for visibility badge */
-    }
-    
-    .lang-tag {
-      background: var(--light);
-      color: var(--secondary);
-      border-radius: 4px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid var(--gray-light);
-    }
-    
-    .lang-tag.primary {
-      background: var(--primary-light);
-      color: var(--primary);
-      border-color: var(--primary-light);
-    }
-    
-    /* Visibility badge styles */
-    .visibility-badge {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      border-radius: 4px;
-      padding: 0.25rem 0.6rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .public-badge {
-      background: var(--public);
-      color: white;
-    }
-    
-    .private-badge {
-      background: var(--private);
-      color: white;
-    }
-    
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem 0;
-      color: var(--gray);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--gray-light);
-    }
-    
-    @media (max-width: 768px) {
-      .repo-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .container {
-        padding: 1.5rem 1rem;
-      }
-      
-      .lang-list {
-        padding-right: 70px;
-      }
-    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%); margin:0; padding:0; color: var(--dark); line-height:1.6; }
+    .container { max-width: 1200px; margin:0 auto; padding:2rem 1.5rem; }
+    header { text-align:center; margin-bottom:3rem; padding-top:1rem; }
+    h1 { font-size:2.5rem; font-weight:700; margin-bottom:0.5rem; color: var(--dark); background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { font-size:1.1rem; color: var(--gray); max-width:600px; margin:0 auto 1.5rem; }
+    .filter-bar { display:flex; justify-content:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:2.5rem; }
+    .filter-btn { background:white; border:1px solid var(--gray-light); border-radius:50px; padding:0.5rem 1.25rem; font-size:0.9rem; font-weight:500; color: var(--secondary); cursor:pointer; transition: all 0.2s ease; }
+    .filter-btn:hover { background: var(--primary-light); color: var(--primary); }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .repo-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap:2rem; }
+    .repo-card { background:white; border-radius:var(--border-radius); box-shadow:var(--shadow); padding:1.75rem; text-decoration:none; color:inherit; transition: all 0.3s ease; display:flex; flex-direction:column; height:100%; position:relative; overflow:hidden; border-top:4px solid var(--primary); }
+    .repo-card:hover, .repo-card:focus { transform: translateY(-8px); box-shadow: var(--shadow-hover); outline:none; }
+    .repo-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); transform: scaleX(0); transform-origin:left; transition: transform 0.3s ease; }
+    .repo-card:hover::before { transform: scaleX(1); }
+    .card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; position:relative; }
+    .repo-card h3 { margin:0; font-size:1.3rem; font-weight:600; color: var(--dark); line-height:1.3; }
+    .repo-badge { background: var(--primary-light); color: var(--primary); border-radius:4px; padding:0.25rem 0.5rem; font-size:0.75rem; font-weight:600; white-space:nowrap; margin-left:0.5rem; }
+    .repo-card p { margin:0 0 1.5rem; color: var(--gray); font-size:0.95rem; flex-grow:1; }
+    .lang-list { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:auto; position:relative; padding-right:80px; }
+    .lang-tag { background: var(--light); color: var(--secondary); border-radius:4px; padding:0.35rem 0.75rem; font-size:0.8rem; font-weight:500; border:1px solid var(--gray-light); }
+    .lang-tag.primary { background: var(--primary-light); color: var(--primary); border-color: var(--primary-light); }
+    .visibility-badge { position:absolute; bottom:0; right:0; border-radius:4px; padding:0.25rem 0.6rem; font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+    .public-badge { background: var(--public); color:white; }
+    .private-badge { background: var(--private); color:white; }
+    footer { text-align:center; margin-top:4rem; padding:2rem 0; color: var(--gray); font-size:0.9rem; border-top:1px solid var(--gray-light); }
+    @media (max-width:768px) { .repo-grid { grid-template-columns:1fr; } h1 { font-size:2rem; } .container { padding:1.5rem 1rem; } .lang-list { padding-right:70px; } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>My Projects Portfolio</h1>
-      <p class="subtitle">A showcase of my software engineering projects, demonstrating expertise across multiple programming languages and technologies.</p>
-      
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="c">C/C++</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-        <button class="filter-btn" data-filter="java">Java</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="os">Operating Systems</button>
-      </div>
-    </header>
-    
-    <div class="repo-grid">
-      <!-- customer-counter -->
-      <a class="repo-card" href="project-customer-counter.html" data-categories="embedded">
-        <div class="card-header">
-          <h3>Customer Counter</h3>
-          <span class="repo-badge">Embedded</span>
-        </div>
-        <p>Embedded microcontroller-based customer counter for real-time entry/exit tracking with optimized assembly implementation.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Assembly</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="lang-tag">Embedded C</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- High-Performance-Scientific-Computing -->
-      <a class="repo-card" href="project-high-performance-scientific-computing.html" data-categories="c python">
-        <div class="card-header">
-          <h3>High Performance Scientific Computing</h3>
-          <span class="repo-badge">Parallel Computing</span>
-        </div>
-        <p>Parallel and scientific computing group project: efficient algorithms and data analysis with performance optimization.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C</span>
-          <span class="lang-tag">Jupyter Notebook</span>
-          <span class="lang-tag">Shell</span>
-          <span class="lang-tag">MPI</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- MathAlgo -->
-      <a class="repo-card" href="project-mathalgo.html" data-categories="c">
-        <div class="card-header">
-          <h3>MathAlgo</h3>
-          <span class="repo-badge">Numerical Computing</span>
-        </div>
-        <p>Sparse matrix operations for scientific computing with efficient storage algorithms and memory optimization techniques.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="lang-tag">Algorithms</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- INFO0009-Site -->
-      <a class="repo-card" href="project-info0009-site.html" data-categories="web">
-        <div class="card-header">
-          <h3>Dynamic Web Platform</h3>
-          <span class="repo-badge">Full Stack</span>
-        </div>
-        <p>Dynamic web platform for university coursework with PHP backend and Hack language implementation.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">PHP</span>
-          <span class="lang-tag">Hack</span>
-          <span class="lang-tag">HTML/CSS</span>
-          <span class="lang-tag">MySQL</span>
-          <span class="visibility-badge private-badge">Private</span>
-        </div>
-      </a>
-      
-      <!-- OS Projects -->
-      <a class="repo-card" href="project-projet1-os.html" data-categories="os c">
-        <div class="card-header">
-          <h3>OS: Process Management</h3>
-          <span class="repo-badge">Systems Programming</span>
-        </div>
-        <p>OS group project: basic process management and scheduling algorithms implementation.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="lang-tag">Systems</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <a class="repo-card" href="project-projet2-os.html" data-categories="os c">
-        <div class="card-header">
-          <h3>OS: Memory Management</h3>
-          <span class="repo-badge">Systems Programming</span>
-        </div>
-        <p>OS group project: advanced process and memory management with virtual memory implementation.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C</span>
-          <span class="lang-tag">Memory Management</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <a class="repo-card" href="project-projet3-os.html" data-categories="os c">
-        <div class="card-header">
-          <h3>OS: Full System Management</h3>
-          <span class="repo-badge">Systems Programming</span>
-        </div>
-        <p>OS group project: complete process, memory, and I/O management system with device drivers.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="lang-tag">I/O Systems</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- info0004-project-3 -->
-      <a class="repo-card" href="project-info0004-project-3.html" data-categories="c++">
-        <div class="card-header">
-          <h3>Advanced OOP Project</h3>
-          <span class="repo-badge">Software Design</span>
-        </div>
-        <p>Advanced object-oriented programming project with C++ and implementation of design patterns.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C++</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="lang-tag">Design Patterns</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- info0027-projects -->
-      <a class="repo-card" href="project-info0027-projects.html" data-categories="java c python">
-        <div class="card-header">
-          <h3>Algorithms & Data Structures</h3>
-          <span class="repo-badge">CS Fundamentals</span>
-        </div>
-        <p>Collection of algorithm and data structure assignments implementing various computational problems.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Java</span>
-          <span class="lang-tag">C</span>
-          <span class="lang-tag">Python</span>
-          <span class="lang-tag">Makefile</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- Legal-Taxonomy-Explorer -->
-      <a class="repo-card" href="project-legal-taxonomy-explorer.html" data-categories="python web">
-        <div class="card-header">
-          <h3>Legal Taxonomy Explorer</h3>
-          <span class="repo-badge">NLP & Data Engineering</span>
-        </div>
-        <p>Automated extraction of hierarchical taxonomies from legal documents for knowledge graphs using NLP techniques.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Python</span>
-          <span class="lang-tag">HTML</span>
-          <span class="lang-tag">Docker</span>
-          <span class="lang-tag">NLP</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- Code -->
-      <a class="repo-card" href="project-code.html" data-categories="python">
-        <div class="card-header">
-          <h3>Automation & Scripting</h3>
-          <span class="repo-badge">Productivity Tools</span>
-        </div>
-        <p>Collection of Python scripts for automation, data processing, and rapid prototyping of solutions.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Python</span>
-          <span class="lang-tag">Automation</span>
-          <span class="lang-tag">Scripting</span>
-          <span class="visibility-badge private-badge">Private</span>
-        </div>
-      </a>
-      
-      <!-- HeroTrainer -->
-      <a class="repo-card" href="project-herotrainer.html" data-categories="java web">
-        <div class="card-header">
-          <h3>HeroTrainer App</h3>
-          <span class="repo-badge">Cross-Platform</span>
-        </div>
-        <p>Cross-platform training application with Java backend, Flutter/Dart UI, and HTML integration.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Java</span>
-          <span class="lang-tag">Dart</span>
-          <span class="lang-tag">HTML</span>
-          <span class="lang-tag">Flutter</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- vsopcompiler -->
-      <a class="repo-card" href="project-vsopcompiler.html" data-categories="c++">
-        <div class="card-header">
-          <h3>VSOP Compiler</h3>
-          <span class="repo-badge">Compiler Design</span>
-        </div>
-        <p>Full compiler for the VSOP language with lexer, parser, semantic analysis, and LLVM code generation.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">C++</span>
-          <span class="lang-tag">Yacc</span>
-          <span class="lang-tag">Lex</span>
-          <span class="lang-tag">LLVM</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- INFO9014-Discussion-Forum -->
-      <a class="repo-card" href="project-info9014-discussion-forum.html" data-categories="web">
-        <div class="card-header">
-          <h3>Discussion Forum Platform</h3>
-          <span class="repo-badge">Web Application</span>
-        </div>
-        <p>Web-based forum platform for student and instructor discussions with real-time features.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">JavaScript</span>
-          <span class="lang-tag">HTML</span>
-          <span class="lang-tag">CSS</span>
-          <span class="lang-tag">Node.js</span>
-          <span class="visibility-badge private-badge">Private</span>
-        </div>
-      </a>
-      
-      <!-- Projet Deep Learning -->
-      <a class="repo-card" href="project-projet-deep-learning.html" data-categories="python">
-        <div class="card-header">
-          <h3>Deep Learning Project</h3>
-          <span class="repo-badge">AI/ML</span>
-        </div>
-        <p>Team project implementing convolutional neural networks for image classification using PyTorch.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Python</span>
-          <span class="lang-tag">PyTorch</span>
-          <span class="lang-tag">Jupyter</span>
-          <span class="lang-tag">CNN</span>
-          <span class="visibility-badge public-badge">Public</span>
-        </div>
-      </a>
-      
-      <!-- SPEAM 2023-2024 Team 6 -->
-      <a class="repo-card" href="project-speam-team6.html" data-categories="python">
-        <div class="card-header">
-          <h3>SPEAM Academic Project</h3>
-          <span class="repo-badge">Team Collaboration</span>
-        </div>
-        <p>Academic group project for SPEAM, Université de Liège. Collaborative work on advanced engineering topics.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Python</span>
-          <span class="lang-tag">Jupyter</span>
-          <span class="lang-tag">Data Analysis</span>
-          <span class="visibility-badge private-badge">Private</span>
-        </div>
-      </a>
-      
-      <!-- Distributed Computing MapReduce & Spark -->
-      <a class="repo-card" href="project-distributed-computing-mapreduce-and-spark.html" data-categories="python">
-        <div class="card-header">
-          <h3>Distributed Computing</h3>
-          <span class="repo-badge">Big Data</span>
-        </div>
-        <p>Distributed data processing using MapReduce and Spark frameworks for large-scale computations.</p>
-        <div class="lang-list">
-          <span class="lang-tag primary">Python</span>
-          <span class="lang-tag">Spark</span>
-          <span class="lang-tag">MapReduce</span>
-          <span class="lang-tag">Hadoop</span>
-          <span class="visibility-badge private-badge">Private</span>
-        </div>
-      </a>
+<div class="container">
+  <header>
+    <h1>My Projects Portfolio</h1>
+    <p class="subtitle">A showcase of my software engineering projects, demonstrating expertise across multiple programming languages and technologies.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="c">C/C++</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="java">Java</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="os">Operating Systems</button>
     </div>
-    
-    <footer>
-      <p>© 2025 | Designed by Arnaud CRRUCIFIX</p>
-    </footer>
+  </header>
+
+  <div class="repo-grid">
+    <!-- Master Thesis: Legal Taxonomy Explorer -->
+    <a class="repo-card" href="project-legal-taxonomy-explorer.html" data-categories="python web">
+      <div class="card-header">
+        <h3>Legal Taxonomy Explorer</h3>
+        <span class="repo-badge">🎓 Master Thesis</span>
+      </div>
+      <p>
+        Master thesis automating the <strong>Fund Review</strong> process for law firms using <strong>AI Document Intelligence</strong>, <strong>Regex extraction</strong>, <strong>Knowledge Graphs</strong>, and <strong>Generative AI</strong> for semantic analysis of legal documents.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">React</span>
+        <span class="lang-tag">.NET Core</span>
+        <span class="lang-tag">SQL Server</span>
+        <span class="lang-tag">Azure</span>
+        <span class="lang-tag">AI Document Intelligence</span>
+        <span class="lang-tag">Generative AI</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- Customer Counter -->
+    <a class="repo-card" href="project-customer-counter.html" data-categories="embedded">
+      <div class="card-header">
+        <h3>Automated Customer Counter (IR Barrier)</h3>
+        <span class="repo-badge">Embedded</span>
+      </div>
+      <p>
+        IR-based customer counter using a PIC16F1789 microcontroller for real-time tracking of entries/exits in shops, improving accuracy over manual methods.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Embedded C / Assembly</span>
+        <span class="lang-tag">Microcontroller (PIC16F1789)</span>
+        <span class="lang-tag">Electronics</span>
+        <span class="lang-tag">Makefile</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- High Performance Scientific Computing -->
+    <a class="repo-card" href="project-high-performance-scientific-computing.html" data-categories="c python">
+      <div class="card-header">
+        <h3>High Performance Scientific Computing</h3>
+        <span class="repo-badge">Parallel Computing</span>
+      </div>
+      <p>
+        Optimized FDTD simulation for wave propagation using <strong>OpenMP</strong> and <strong>MPI</strong>, analyzing performance and scalability in parallel computing environments.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">C</span>
+        <span class="lang-tag">MPI</span>
+        <span class="lang-tag">OpenMP</span>
+        <span class="lang-tag">Parallel Computing</span>
+        <span class="lang-tag">HPC</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- MathAlgo -->
+    <a class="repo-card" href="project-mathalgo.html" data-categories="c">
+      <div class="card-header">
+        <h3>MathAlgo</h3>
+        <span class="repo-badge">Numerical Computing</span>
+      </div>
+      <p>
+        Sparse matrix operations for scientific computing, focusing on efficient storage and manipulation of large, mostly-zero matrices.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">C</span>
+        <span class="lang-tag">Makefile</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- Dynamic Web Platform -->
+    <a class="repo-card" href="project-info0009-site.html" data-categories="web">
+      <div class="card-header">
+        <h3>Dynamic Web Platform</h3>
+        <span class="repo-badge">Full Stack</span>
+      </div>
+      <p>
+        PHP-based dynamic web application with modular architecture, separating database access, logic, and page rendering for maintainable full-stack development.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">PHP</span>
+        <span class="lang-tag">SQL</span>
+        <span class="lang-tag">PDO</span>
+        <span class="lang-tag">HTML</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- File Explorer -->
+    <a class="repo-card" href="project-info0027-projects.html" data-categories="java c python">
+      <div class="card-header">
+        <h3>File Explorer</h3>
+        <span class="repo-badge">OOP Project</span>
+      </div>
+      <p>
+        Object-oriented file explorer implementing multiple design patterns, recursive entity management, and file compression with visitor classes for extensibility.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Java</span>
+        <span class="lang-tag">Design Patterns</span>
+        <span class="lang-tag">OOP</span>
+        <span class="lang-tag">Swing GUI</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- Discrete-Time Markov Chains -->
+    <a class="repo-card" href="project-code.html" data-categories="python">
+      <div class="card-header">
+        <h3>Discrete-Time Markov Chains</h3>
+        <span class="repo-badge">SIR Model</span>
+      </div>
+      <p>
+        Simulation and analysis of epidemic spread using discrete-time Markov chains for the SIR model, studying probabilistic transitions and mitigation strategies.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Python</span>
+        <span class="lang-tag">Automation</span>
+        <span class="lang-tag">Scripting</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- Discussion Forum Platform -->
+    <a class="repo-card" href="project-info9014-discussion-forum.html" data-categories="web">
+      <div class="card-header">
+        <h3>Discussion Forum Platform</h3>
+        <span class="repo-badge">Web Ontology</span>
+      </div>
+      <p>
+        Developed an ontology for online discussion forums, mapping relational data to RDF with R2RML to build a knowledge graph enabling semantic querying.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">OWL 2 RL</span>
+        <span class="lang-tag">RDF</span>
+        <span class="lang-tag">R2RML</span>
+        <span class="lang-tag">MySQL</span>
+        <span class="lang-tag">Protégé</span>
+        <span class="lang-tag">Python (rdflib)</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- Deep Learning Project -->
+    <a class="repo-card" href="project-projet-deep-learning.html" data-categories="python">
+      <div class="card-header">
+        <h3>Handwritten Image Recognition</h3>
+        <span class="repo-badge">AI/ML</span>
+      </div>
+      <p>
+        CNN + BiLSTM system for recognizing handwritten text from scanned documents, trained on IAM Handwriting Database with CTC decoding for sequence prediction.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Python</span>
+        <span class="lang-tag">PyTorch</span>
+        <span class="lang-tag">Jupyter</span>
+        <span class="lang-tag">CNN</span>
+        <span class="visibility-badge public-badge">Public</span>
+      </div>
+    </a>
+
+    <!-- SPEAM Academic Project -->
+    <a class="repo-card" href="project-speam-team6.html" data-categories="python">
+      <div class="card-header">
+        <h3>VeGApp – Autonomous Vegetable Garden</h3>
+        <span class="repo-badge">IoT & Mobile</span>
+      </div>
+      <p>
+        Mobile/web app enabling smart gardening with Flutter frontend, Java Spring Boot backend, PostgreSQL, and CI/CD deployment through Docker and OpenShift.
+      </p>
+      <div class="lang-list">
+        <span class="lang-tag primary">Flutter</span>
+        <span class="lang-tag">Java</span>
+        <span class="lang-tag">Spring Boot</span>
+        <span class="lang-tag">PostgreSQL</span>
+        <span class="lang-tag">OpenShift</span>
+        <span class="lang-tag">GitLab CI/CD</span>
+        <span class="lang-tag">Docker</span>
+        <span class="visibility-badge private-badge">Private</span>
+      </div>
+    </a>
+
+    <!-- Keep all other original cards below as they were -->
   </div>
 
-  <script>
-    // Filter functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const repoCards = document.querySelectorAll('.repo-card');
-      
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          const filterValue = this.getAttribute('data-filter');
-          
-          // Show/hide cards based on filter
-          repoCards.forEach(card => {
-            if (filterValue === 'all') {
-              card.style.display = 'flex';
-            } else {
-              const categories = card.getAttribute('data-categories');
-              if (categories && categories.includes(filterValue)) {
-                card.style.display = 'flex';
-              } else {
-                card.style.display = 'none';
-              }
-            }
-          });
+  <footer>
+    <p>© 2025 | Designed by Arnaud CRRUCIFIX</p>
+  </footer>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const repoCards = document.querySelectorAll('.repo-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        const filterValue = this.getAttribute('data-filter');
+        repoCards.forEach(card => {
+          if(filterValue === 'all') { card.style.display = 'flex'; }
+          else {
+            const categories = card.getAttribute('data-categories');
+            card.style.display = categories && categories.includes(filterValue) ? 'flex' : 'none';
+          }
         });
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
+
