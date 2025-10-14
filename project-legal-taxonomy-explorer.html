@@ -37,14 +37,7 @@
 
     <h2>Thesis Summary</h2>
     <p>
-      This master thesis explores the automation of the <strong>Fund Review</strong> process conducted by law firms for asset management companies. The goal is to replace repetitive, manual document evaluations with an intelligent automation framework combining <strong>AI Document Intelligence</strong>, <strong>Regex-driven extraction</strong>, <strong>Decision Trees</strong>, and <strong>Generative AI</strong>. The solution is built using <strong>React</strong>, <strong>.NET Core</strong>, <strong>SQL Server</strong>, and <strong>Microsoft Azure</strong>.
-    </p>
-
-    <div class="photo-gallery">
-      <img src="images/knowledge_graph.png" alt="Knowledge Graph Representation">
-      <img src="images/architecture_diagram.png" alt="System Architecture Diagram">
-      <img src="images/ai_pipeline.png" alt="AI Processing Pipeline">
-    </div>
+      This master thesis explores the automation of the <strong>Fund Review</strong> process conducted by law firms for asset management companies. The goal is to replace repetitive, manual document evaluations with an intelligent automation framework combining <strong>AI Document Intelligence</strong>, <strong>Regex extraction</strong>, <strong>Knowledge graphs</strong>, and <strong>Generative AI</strong>.
 
     <h2>Abstract</h2>
     <p>
@@ -55,8 +48,7 @@
     <ul>
       <li><strong>Knowledge Graph Construction:</strong> Legal documents are parsed into hierarchical chunks and transformed into semantic graph nodes, preserving cross-references and relationships.</li>
       <li><strong>Automated Taxonomy Discovery:</strong> A legal taxonomy emerges via <em>graph-based community detection</em> (Louvain algorithm), forming clusters of interconnected legal concepts.</li>
-      <li><strong>Graph-RAG Framework:</strong> Integrates knowledge graph retrieval with LLM generation, grounding language outputs in verifiable, domain-specific structures.</li>
-      <li><strong>Hybrid Architecture:</strong> Bridges symbolic and generative AI to provide explainable, contextually accurate fund review insights.</li>
+      <li><strong>Graph-RAG Framework:</strong> Integrates knowledge graph retrieval with LLM generation.</li>
     </ul>
 
     <h2>Methodology & Design</h2>
@@ -65,27 +57,26 @@
       <li>Legal concepts are interlinked through <strong>semantic embeddings</strong> to capture both explicit and implicit references.</li>
       <li>A <strong>Knowledge Graph</strong> represents entities and relations extracted from documents via LLM-assisted entity recognition and ontology alignment.</li>
       <li>A <strong>community detection algorithm</strong> produces an emergent taxonomy of legal categories for fund review automation.</li>
-      <li>The <strong>GraphRAG system</strong> retrieves grounded legal text for drafting accurate, domain-aware fund review reports.</li>
+      <li>The <strong>GraphRAG system</strong> summarizes legal texts.</li>
     </ul>
 
     <h2>Technologies & Tools</h2>
     <ul>
-      <li>Frontend: <strong>React</strong> for web-based interfaces.</li>
-      <li>Backend: <strong>.NET Core</strong> for API and orchestration services.</li>
-      <li>Database: <strong>SQL Server</strong> for structured fund and legal data storage.</li>
-      <li>Cloud Infrastructure: <strong>Microsoft Azure</strong> for hosting, AI services, and Document Intelligence APIs.</li>
-      <li>AI Components: <strong>Azure Document Intelligence</strong>, <strong>OpenAI GPT-5</strong>, <strong>Knowledge Graph frameworks</strong>.</li>
+      <li>Python.</li>
+      <li>Use of an OWL ontology file.</li>
+      <li>Graph database system: Neo4j</li>
+      <li>Cloud Infrastructure: <strong>Microsoft Azure</strong> for delivery.</li>
+      <li>AI Components: <strong>OpenAI GPT-5</strong>, <strong>text-embedding-3-small for the OpenAI embedder</strong>. </li>
     </ul>
 
     <h2>Expected Impact</h2>
     <ul>
       <li>Increased operational efficiency and reduced manual effort in fund review workflows.</li>
-      <li>Improved compliance accuracy and legal interpretability through hybrid AI reasoning.</li>
-      <li>Creation of a scalable and explainable architecture for legal document automation.</li>
+      <li>Improved compliance accuracy and legal interpretability.</li>
       <li>Potential extension toward fully autonomous legal and financial review systems.</li>
     </ul>
 
-    <a class="github-link" href="http://hdl.handle.net/2268.2/24860" target="_blank">Consult the Master Thesis (Accès restreint)</a>
+    <a class="github-link" href="http://hdl.handle.net/2268.2/24860" target="_blank">Consult the Master Thesis (restricted access)</a>
 
     <footer>
       <p>Master Thesis – Automating Legal Fund Review Processes | University of Liège | 2025</p>
