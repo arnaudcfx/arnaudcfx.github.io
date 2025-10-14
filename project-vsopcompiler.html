@@ -47,13 +47,6 @@
       <li><strong>Code Generation:</strong> Using the LLVM API, the compiler emits LLVM Intermediate Representation (IR). Each node in the AST maps to IR instructions, with vtable creation for dynamic dispatch and virtual methods.</li>
     </ul>
 
-    <div class="photo-gallery">
-      <!-- Add compiler diagrams or code screenshots here -->
-      <img src="images/lexer_flow.png" alt="Lexical Analysis Flow">
-      <img src="images/parser_ast.png" alt="Parser and AST Structure">
-      <img src="images/llvm_output.png" alt="LLVM IR Output Example">
-    </div>
-
     <h2>Core Features</h2>
     <ul>
       <li>Implements a full compilation pipeline: lexing, parsing, semantic checks, and code generation.</li>
@@ -72,12 +65,9 @@
       <li><strong>Valgrind / gdb</strong> – Debugging and memory leak detection.</li>
     </ul>
 
-    <h2>Design Patterns & Code Logic</h2>
+    <h2>Design Pattern</h2>
     <ul>
-      <li><strong>Visitor Pattern:</strong> Enables clean, modular traversal of AST nodes during semantic and IR generation passes.</li>
-      <li><strong>Factory Pattern:</strong> Used for token and node creation, simplifying code management and reducing redundancy.</li>
-      <li><strong>Memory Management:</strong> Implemented using <code>std::shared_ptr</code> and <code>std::unique_ptr</code> to ensure safe resource handling.</li>
-      <li><strong>Error Handling:</strong> Centralized exception and diagnostic management for compiler feedback.</li>
+      <li><strong>Visitor Pattern:</strong> Allows clean, modular traversal of AST nodes during semantic and IR generation passes.</li>
     </ul>
 
     <h2>Results & Learnings</h2>
@@ -85,13 +75,13 @@
       <li>Built a fully functional compiler from scratch capable of generating LLVM-compatible code.</li>
       <li>Gained deep understanding of compiler design principles, parsing theory, and semantic validation.</li>
       <li>Learned advanced C++ techniques including smart pointers, templates, and modular architecture.</li>
-      <li>Identified possible extensions such as code optimization, more robust error recovery, and static analysis tools.</li>
+      <li>Identified possible extensions such as code optimization.</li>
     </ul>
 
     <a class="github-link" href="https://github.com/arnaudcfx/vsopcompiler" target="_blank">View the Project on GitHub</a>
 
     <footer>
-      <p>Project Report — vsopcompiler | Compiler Construction in C++ | 2025</p>
+      <p>Project vsopcompiler | Compiler Construction in C++ | 2025</p>
     </footer>
   </div>
 </body>
